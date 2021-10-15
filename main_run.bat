@@ -1,1 +1,0 @@
-venv\Scripts\activate.bat && set FLASK_APP=main:app && flask run -h 127.0.0.1 -p 8080
