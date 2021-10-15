@@ -10,7 +10,7 @@ def create_app():
     app = Flask(import_name=__name__)
     app.config.from_object(obj=Config)
 
-    @app.route('favicon.ico', methods=['GET'])
+    @app.route('/favicon.ico', methods=['GET'])
     def favicon():
         return send_from_directory(
             directory='static',
