@@ -1,0 +1,1 @@
+venv\Scripts\activate.bat && set FLASK_APP=main:app && flask shell
