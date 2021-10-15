@@ -4,10 +4,14 @@ def create_app():
 
     :return: Flask object
     """
-    from flask import Flask
+    from flask import Flask, send_from_directory
     from config import DevelopmentConfig as Config
+
+    def favicon():
+        return send_from_directory(directory='static', path='favicon.ico')
 
     app = Flask(import_name=__name__)
     app.config.from_object(obj=Config)
+    app.add_url_rule(rule='/favicon.ico', view_func=favicon)
 
     return app
