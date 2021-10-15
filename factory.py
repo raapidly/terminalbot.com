@@ -1,4 +1,9 @@
 def create_app():
+    """
+    Application factory.
+
+    :return: Flask object
+    """
     from flask import Flask
     from config import DevelopmentConfig as Config
 
