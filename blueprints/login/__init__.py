@@ -8,4 +8,4 @@ login_blueprint = Blueprint(
 
 @login_blueprint.route(rule='/', methods=['get'])
 def index():
-    return render_template('index.html')
+    return render_template(template_name_or_list='index.html')
