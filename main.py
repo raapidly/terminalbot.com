@@ -7,6 +7,8 @@ Object initialization in application context.
 app = create_app()
 
 """
-Bluprint initialization
+Bluprint registration
 """
-app.register_blueprint(blueprint=login_blueprint)
+app.register_blueprint(
+    blueprint=login_blueprint,
+    url_prefix='/login')
