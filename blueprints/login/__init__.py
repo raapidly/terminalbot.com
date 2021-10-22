@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template
 
-login_blueprint = Blueprint(
+blueprint = Blueprint(
     name='login',
-    import_name=__name__,
-    template_folder='templates')
+    import_name=__name__)
 
 
-@login_blueprint.route(rule='/', methods=['get'])
+@blueprint.route(rule='/', methods=['get'])
 def index():
-    return render_template(template_name_or_list='index.html')
+    return render_template(template_name_or_list='login/index.html')

@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template
 
-dashboard_blueprint = Blueprint(
+blueprint = Blueprint(
     name='dashboard',
-    import_name=__name__,
-    template_folder='templates')
+    import_name=__name__)
 
 
-@dashboard_blueprint.route(rule='/', methods=['get'])
+@blueprint.route(rule='/', methods=['get'])
 def index():
-    return render_template(template_name_or_list='index.html')
+    return render_template(template_name_or_list='dashboard/index.html')
