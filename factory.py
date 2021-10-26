@@ -10,6 +10,9 @@ def create_app():
 
     app = Flask(import_name=__name__)
     app.config.from_object(obj=Config)
-    minify(app=app)
+    minify(
+        app=app,
+        caching_limit=1,
+        passive=True)
 
     return app
