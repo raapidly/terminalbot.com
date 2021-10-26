@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>{% block subtitle %}{% endblock %}{% if self.subtitle() %} | {% endif %}Terminal Bot</title>
+
+    <title>
+        {% block subtitle %}{% endblock %}
+        {% if self.subtitle() %}|{% endif %}
+        Terminal Bot
+    </title>
     <link rel="manifest" href="/static/site.webmanifest">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
     <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/static/apple-touch-icon.png">
+
     <link rel="stylesheet" type="text/css" href="/static/webix/webix.min.css">
     <script type="text/javascript" src="/static/webix/webix.min.js"></script>
 </head>
+
 <body>
 {% block body %}
 {% endblock %}
 </body>
+
 </html>
