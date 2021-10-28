@@ -12,7 +12,7 @@ def create_app():
     app.config.from_object(obj=Config)
     minify(
         app=app,
-        caching_limit=1,
+        caching_limit=3,
         passive=True)
 
     return app
