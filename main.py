@@ -1,4 +1,4 @@
-from blueprints import dashboard, login
+from blueprints import dashboard, home, login
 from factory import create_app
 
 """
@@ -9,6 +9,10 @@ app = create_app()
 """
 Bluprint registration
 """
+app.register_blueprint(
+    blueprint=home.blueprint,
+    url_prefix='/')
+
 app.register_blueprint(
     blueprint=dashboard.blueprint,
     url_prefix='/dashboard')
