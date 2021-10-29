@@ -4,4 +4,4 @@ venv/
 
 # Files
 *.pyc
-.env
+config.json

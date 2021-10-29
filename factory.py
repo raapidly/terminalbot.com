@@ -4,14 +4,12 @@ def create_app():
 
     :return: Flask object
     """
-    from dotenv import dotenv_values
     from flask import Flask
     from flask_minify import minify
     from flask_session import Session
 
-    config = dotenv_values('.env')
     app = Flask(import_name=__name__)
-    app.config.from_object(obj=config)
+    app.config.from_json(filename='config.json')
     Session(app=app)
     minify(
         app=app,
