@@ -11,7 +11,7 @@ Bluprint registration
 """
 app.register_blueprint(
     blueprint=dashboard.blueprint,
-    url_prefix='/')
+    url_prefix='/dashboard')
 
 app.register_blueprint(
     blueprint=login.blueprint,
