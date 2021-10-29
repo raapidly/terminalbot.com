@@ -1,3 +1,4 @@
+python-dotenv==0.19.1
 Flask==2.0.2
 Flask-Minify==0.32
 Flask-Session==0.4.0
