@@ -4,11 +4,65 @@
 
 {% block body %}
     <script>
+
         webix.ui({
             type: "space",
-            rows: [
-                {template: "Terminal Bot is under construction!"},
+            cols: [
+                {
+                    id: "tree", view: "tree",
+                    width: 200, select: true,
+                    data: [
+                        {
+                            _type: "form", value: "Form", data: [],
+                        },
+                    ],
+                },
+                {
+                    rows: [],
+                },
             ],
         })
+
+        const tree = $$("tree")
+        const context_menu = webix.ui({
+            view: "contextmenu", master: tree,
+            data: [
+                {id: "form-properties", value: "Properties"},
+                {id: "form-add-datablock", value: "Add Datablock"},
+                {id: "datablock-properties", value: "Properties"},
+                {id: "datablock-add-item", value: "Add Item"},
+            ],
+        })
+
+        tree.attachEvent("onBeforeContextMenu", function (id) {
+            let item = tree.getItem(id)
+            tree.select(item.id)
+            context_menu.hideItem("form-properties")
+            context_menu.hideItem("form-add-datablock")
+            context_menu.hideItem("datablock-properties")
+            context_menu.hideItem("datablock-add-item")
+            switch (item._type) {
+                case "form":
+                    context_menu.showItem("form-properties")
+                    context_menu.showItem("form-add-datablock")
+                    break
+                case "datablock":
+                    context_menu.showItem("datablock-properties")
+                    context_menu.showItem("datablock-add-item")
+                    break
+            }
+        })
+
+        context_menu.attachEvent("onItemClick", function (id) {
+            switch (id) {
+                case "form-add-datablock":
+                    let selectedItem = tree.getSelectedItem()
+                    let newItem = {_type: "datablock", value: "Datablock"}
+                    tree.add(newItem, -1, selectedItem.id)
+                    tree.open(selectedItem.id)
+                    break
+            }
+        })
+
     </script>
 {% endblock %}
