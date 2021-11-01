@@ -4,7 +4,6 @@
 
 {% block body %}
     <script>
-
         webix.ui({
             type: "space",
             cols: [
@@ -37,10 +36,12 @@
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id)
+
             tree.select(item.id)
             context_menu.data.each(function (datum) {
                 context_menu.hideItem(datum.id)
             })
+
             switch (item._type) {
                 case "form":
                     context_menu.showItem("form-properties")
@@ -57,21 +58,20 @@
         })
 
         context_menu.attachEvent("onItemClick", function (id) {
-            let selectedItem = tree.getSelectedItem()
             let newItem = {}
+            let selectedItem = tree.getSelectedItem()
+
             switch (id) {
                 case "form-add-datablock":
                     newItem = {_type: "datablock", value: "Datablock"}
-                    tree.add({_type: "datablock", value: "Datablock"}, -1, selectedItem.id)
-                    tree.open(selectedItem.id)
                     break
                 case "datablock-add-item":
                     newItem = {_type: "item", value: "Item"}
-                    tree.add(newItem, -1, selectedItem.id)
-                    tree.open(selectedItem.id)
                     break
             }
-        })
 
+            tree.add(newItem, -1, selectedItem.id)
+            tree.open(selectedItem.id)
+        })
     </script>
 {% endblock %}
