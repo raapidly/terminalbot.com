@@ -42,11 +42,11 @@
         const context_menu = webix.ui({
             view: "contextmenu", width: 200, master: tree,
             data: [
-                {id: "form-properties", value: "Form Properties"},
-                {id: "form-add-datablock", value: "Add Datablock"},
-                {id: "datablock-properties", value: "Datablock Properties"},
+                {id: "form-properties", value: "Properties"},
+                {id: "form-add-datablock", value: "Add Data Block"},
+                {id: "datablock-properties", value: "Properties"},
                 {id: "datablock-add-item", value: "Add Item"},
-                {id: "item-properties", value: "Item Properties"},
+                {id: "item-properties", value: "Properties"},
             ],
         })
 
@@ -79,7 +79,7 @@
 
             switch (id) {
                 case "form-add-datablock":
-                    newItem = {_type: "datablock", value: "Datablock"}
+                    newItem = {_type: "datablock", value: "Data Block"}
                     tree.add(newItem, -1, selectedItem.id)
                     tree.open(selectedItem.id)
                     break
