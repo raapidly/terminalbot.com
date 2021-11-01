@@ -31,16 +31,16 @@
                 {id: "form-add-datablock", value: "Add Datablock"},
                 {id: "datablock-properties", value: "Properties"},
                 {id: "datablock-add-item", value: "Add Item"},
+                {id: "item-properties", value: "Properties"},
             ],
         })
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id)
             tree.select(item.id)
-            context_menu.hideItem("form-properties")
-            context_menu.hideItem("form-add-datablock")
-            context_menu.hideItem("datablock-properties")
-            context_menu.hideItem("datablock-add-item")
+            context_menu.data.each(function (datum) {
+                context_menu.hideItem(datum.id)
+            })
             switch (item._type) {
                 case "form":
                     context_menu.showItem("form-properties")
@@ -50,14 +50,23 @@
                     context_menu.showItem("datablock-properties")
                     context_menu.showItem("datablock-add-item")
                     break
+                case "item":
+                    context_menu.showItem("item-properties")
+                    break
             }
         })
 
         context_menu.attachEvent("onItemClick", function (id) {
+            let selectedItem = tree.getSelectedItem()
+            let newItem = {}
             switch (id) {
                 case "form-add-datablock":
-                    let selectedItem = tree.getSelectedItem()
-                    let newItem = {_type: "datablock", value: "Datablock"}
+                    newItem = {_type: "datablock", value: "Datablock"}
+                    tree.add({_type: "datablock", value: "Datablock"}, -1, selectedItem.id)
+                    tree.open(selectedItem.id)
+                    break
+                case "datablock-add-item":
+                    newItem = {_type: "item", value: "Item"}
                     tree.add(newItem, -1, selectedItem.id)
                     tree.open(selectedItem.id)
                     break
