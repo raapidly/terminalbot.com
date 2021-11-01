@@ -64,14 +64,15 @@
             switch (id) {
                 case "form-add-datablock":
                     newItem = {_type: "datablock", value: "Datablock"}
+                    tree.add(newItem, -1, selectedItem.id)
+                    tree.open(selectedItem.id)
                     break
                 case "datablock-add-item":
                     newItem = {_type: "item", value: "Item"}
+                    tree.add(newItem, -1, selectedItem.id)
+                    tree.open(selectedItem.id)
                     break
             }
-
-            tree.add(newItem, -1, selectedItem.id)
-            tree.open(selectedItem.id)
         })
     </script>
 {% endblock %}
