@@ -10,6 +10,22 @@
                 {
                     id: "tree", view: "tree",
                     width: 200, select: true,
+                    type: {
+                        folder: function (item) {
+                            let icon_class = "webix_icon mdi "
+                            switch (item._type) {
+                                case "form":
+                                    icon_class += "mdi-application-cog-outline"
+                                    return `<span class="${icon_class}"></span>`
+                                case "datablock":
+                                    icon_class += "mdi-database-cog-outline"
+                                    return `<span class="${icon_class}"></span>`
+                                case "item":
+                                    icon_class += "mdi-form-textbox"
+                                    return `<span class="${icon_class}"></span>`
+                            }
+                        }
+                    },
                     data: [
                         {
                             _type: "form", value: "Form", data: [],
