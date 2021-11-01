@@ -24,13 +24,13 @@
 
         const tree = $$("tree")
         const context_menu = webix.ui({
-            view: "contextmenu", master: tree,
+            view: "contextmenu", width: 200, master: tree,
             data: [
-                {id: "form-properties", value: "Properties"},
+                {id: "form-properties", value: "Form Properties"},
                 {id: "form-add-datablock", value: "Add Datablock"},
-                {id: "datablock-properties", value: "Properties"},
+                {id: "datablock-properties", value: "Datablock Properties"},
                 {id: "datablock-add-item", value: "Add Item"},
-                {id: "item-properties", value: "Properties"},
+                {id: "item-properties", value: "Item Properties"},
             ],
         })
 
