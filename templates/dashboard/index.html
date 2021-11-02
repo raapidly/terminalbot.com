@@ -235,7 +235,6 @@
         property_item.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
-
         property_form.attachEvent("onAfterEditStop", function () {
             let form_values = property_form.getValues();
             tree.updateItem(form_values.id, form_values);
