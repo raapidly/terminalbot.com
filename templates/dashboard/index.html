@@ -226,17 +226,30 @@
             }
         });
 
+        property_form.attachEvent("onBeforeEditStart", function () {
+            tree.disable();
+        });
+        property_datablock.attachEvent("onBeforeEditStart", function () {
+            tree.disable();
+        });
+        property_item.attachEvent("onBeforeEditStart", function () {
+            tree.disable();
+        });
+
         property_form.attachEvent("onAfterEditStop", function () {
             let form_values = property_form.getValues();
             tree.updateItem(form_values.id, form_values);
+            tree.enable();
         });
         property_datablock.attachEvent("onAfterEditStop", function () {
             let form_values = property_datablock.getValues();
             tree.updateItem(form_values.id, form_values);
+            tree.enable();
         });
         property_item.attachEvent("onAfterEditStop", function () {
             let form_values = property_item.getValues();
             tree.updateItem(form_values.id, form_values);
+            tree.enable();
         });
 
     </script>
