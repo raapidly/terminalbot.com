@@ -4,96 +4,68 @@
 
 {% block body %}
     <script>
+
+        let tree_icon_callback = function (item) {
+            let icon_class = "webix_icon mdi "
+            switch (item._type) {
+                case "form":
+                    icon_class += "mdi-application-cog-outline"
+                    return `<span class="${icon_class}"></span>`
+                case "datablock":
+                    icon_class += "mdi-database-cog-outline"
+                    return `<span class="${icon_class}"></span>`
+                case "item":
+                    icon_class += "mdi-form-textbox"
+                    return `<span class="${icon_class}"></span>`
+            }
+        }
+
         webix.ui({
             type: "space",
             cols: [
                 {
                     id: "tree", view: "tree",
                     width: 200, select: true,
-                    type: {
-                        folder: function (item) {
-                            let icon_class = "webix_icon mdi "
-                            switch (item._type) {
-                                case "form":
-                                    icon_class += "mdi-application-cog-outline"
-                                    return `<span class="${icon_class}"></span>`
-                                case "datablock":
-                                    icon_class += "mdi-database-cog-outline"
-                                    return `<span class="${icon_class}"></span>`
-                                case "item":
-                                    icon_class += "mdi-form-textbox"
-                                    return `<span class="${icon_class}"></span>`
-                            }
-                        }
-                    },
+                    type: {folder: tree_icon_callback},
                     data: [
                         {
                             _type: "form", value: "Form", data: [],
                         },
                     ],
                 },
-                {
-                    rows: [],
-                },
             ],
         })
 
         const tree = $$("tree")
-        const context_menu = webix.ui({
+        const context_menu_form = webix.ui({
             view: "contextmenu", width: 200,
             data: [
-                {id: "form-insert-datablock", value: "Insert Data Block"},
-                {id: "datablock-insert-item", value: "Insert Item"},
-                {id: "separator", $template: "Separator"},
-                {id: "form-properties", value: "Properties"},
-                {id: "datablock-properties", value: "Properties"},
-                {id: "item-properties", value: "Properties"},
+                {
+                    id: "insert", value: "Insert", data: [
+                        {id: "insert-datablock", value: "Data Block"},
+                    ]
+                },
+                {$template: "Separator"},
+                {id: "delete", value: "Delete"},
+                {id: "properties", value: "Properties"},
+            ],
+        })
+        const context_menu_datablock = webix.ui({
+            view: "contextmenu", width: 200,
+            data: [
+                {
+                    id: "insert", value: "Insert", data: [
+                        {id: "insert-item", value: "Item"},
+                    ]
+                },
+                {$template: "Separator"},
+                {id: "delete", value: "Delete"},
+                {id: "properties", value: "Properties"},
             ],
         })
 
-        context_menu.attachTo(tree)
+        context_menu_form.attachTo(tree)
+        context_menu_datablock.attachTo(tree)
 
-        tree.attachEvent("onBeforeContextMenu", function (id) {
-            let item = tree.getItem(id)
-
-            tree.select(item.id)
-            context_menu.data.each(function (datum) {
-                context_menu.hideItem(datum.id)
-            })
-
-            switch (item._type) {
-                case "form":
-                    context_menu.showItem("separator")
-                    context_menu.showItem("form-properties")
-                    context_menu.showItem("form-insert-datablock")
-                    break
-                case "datablock":
-                    context_menu.showItem("separator")
-                    context_menu.showItem("datablock-properties")
-                    context_menu.showItem("datablock-insert-item")
-                    break
-                case "item":
-                    context_menu.showItem("item-properties")
-                    break
-            }
-        })
-
-        context_menu.attachEvent("onItemClick", function (id) {
-            let newItem = {}
-            let selectedItem = tree.getSelectedItem()
-
-            switch (id) {
-                case "form-insert-datablock":
-                    newItem = {_type: "datablock", value: "Data Block"}
-                    tree.add(newItem, -1, selectedItem.id)
-                    tree.open(selectedItem.id)
-                    break
-                case "datablock-insert-item":
-                    newItem = {_type: "item", value: "Item"}
-                    tree.add(newItem, -1, selectedItem.id)
-                    tree.open(selectedItem.id)
-                    break
-            }
-        })
     </script>
 {% endblock %}
