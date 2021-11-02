@@ -33,16 +33,16 @@
                             id: "property-form", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {type: "text", label: "Name"},
+                                {type: "text", label: "Name", id: "$name"},
                             ],
                         },
                         {
                             id: "property-datablock", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {type: "text", label: "Name"},
+                                {type: "text", label: "Name", id: "$name"},
                                 {
-                                    type: "combo", label: "Type", options: [
+                                    type: "combo", label: "Type", id: "$type", options: [
                                         {id: "form", value: "Form"},
                                         {id: "tabular", value: "Tabular"},
                                     ]
@@ -53,10 +53,10 @@
                             id: "property-item", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {type: "text", label: "Name"},
-                                {type: "text", label: "Label"},
+                                {type: "text", label: "Name", id: "$name"},
+                                {type: "text", label: "Label", id: "$label"},
                                 {
-                                    type: "combo", label: "Type", options: [
+                                    type: "combo", label: "Type", id: "$type", options: [
                                         {id: "text", value: "Text"},
                                         {id: "numeric", value: "Numeric"},
                                         {id: "date", value: "Date"},
