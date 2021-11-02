@@ -116,10 +116,10 @@
             ],
         });
 
+        tree.add({_type: "form", value: "Form"});
         context_menu_form.attachTo(tree);
         context_menu_datablock.attachTo(tree);
         context_menu_item.attachTo(tree);
-        tree.add({_type: "form", value: "Form"});
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id);
