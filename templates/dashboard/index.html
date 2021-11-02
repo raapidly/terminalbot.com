@@ -21,15 +21,26 @@
         }
 
         webix.ui({
-            type: "space",
             cols: [
                 {
-                    id: "tree", view: "tree",
-                    width: 300, select: true,
-                    type: {folder: tree_icon_callback},
-                    data: [
-                        {_type: "form", value: "Form", data: []},
+                    type: "space", width: 300,
+                    rows: [
+                        {
+                            id: "tree", view: "tree", select: true,
+                            type: {folder: tree_icon_callback},
+                            data: [
+                                {_type: "form", value: "Form", data: []},
+                            ],
+                        },
+                        {
+                            id: "property-form", view: "property", hidden: false,
+                            elements: [],
+                        },
                     ],
+                },
+                {
+                    type: "space",
+                    rows: [],
                 },
             ],
         })
