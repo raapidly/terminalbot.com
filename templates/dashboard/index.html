@@ -34,15 +34,21 @@
                         },
                         {
                             id: "property-form", view: "property", hidden: true,
-                            elements: [],
+                            elements: [
+                                {type: "label", label: "Form"},
+                            ],
                         },
                         {
                             id: "property-datablock", view: "property", hidden: true,
-                            elements: [],
+                            elements: [
+                                {type: "label", label: "Data Block"},
+                            ],
                         },
                         {
                             id: "property-item", view: "property", hidden: true,
-                            elements: [],
+                            elements: [
+                                {type: "label", label: "Item"},
+                            ],
                         },
                     ],
                 },
@@ -54,6 +60,9 @@
         })
 
         const tree = $$("tree")
+        const property_form = $$("property-form")
+        const property_datablock = $$("property-datablock")
+        const property_item = $$("property-item")
         const context_menu_form = webix.ui({
             view: "contextmenu", width: 200,
             data: [
@@ -95,6 +104,25 @@
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id)
             tree.select(item.id)
+        })
+        tree.attachEvent("onBeforeSelect", function () {
+            property_form.hide()
+            property_datablock.hide()
+            property_item.hide()
+        })
+        tree.attachEvent("onAfterSelect", function (id) {
+            let item = tree.getItem(id)
+            switch (item._type) {
+                case "form":
+                    property_form.show()
+                    break
+                case "datablock":
+                    property_datablock.show()
+                    break
+                case "item":
+                    property_item.show()
+                    break
+            }
         })
         context_menu_form.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem()
