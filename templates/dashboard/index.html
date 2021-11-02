@@ -5,7 +5,7 @@
 {% block body %}
     <script>
 
-        let tree_icon_callback = function (item) {
+        let tree_folder_callback = function (item) {
             let icon_class = "webix_icon mdi ";
             switch (item._type) {
                 case "form":
@@ -27,7 +27,7 @@
                     rows: [
                         {
                             id: "tree", view: "tree", select: true,
-                            type: {folder: tree_icon_callback}, data: [],
+                            type: {folder: tree_folder_callback}, data: [],
                         },
                         {
                             id: "property-form", view: "property", hidden: true,
