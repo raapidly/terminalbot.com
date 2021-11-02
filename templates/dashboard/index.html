@@ -159,8 +159,9 @@
             switch (id) {
                 case "insert-datablock":
                     let newItem = {_type: "datablock", value: "Data Block"};
-                    tree.add(newItem, -1, item.id);
+                    let newItemId = tree.add(newItem, -1, item.id);
                     tree.open(item.id);
+                    tree.select(newItemId);
                     break;
                 case "triggers":
                     webix.message(`"${item.value}" triggers`);
@@ -172,8 +173,9 @@
             switch (id) {
                 case "insert-item":
                     let newItem = {_type: "item", value: "Item"};
-                    tree.add(newItem, -1, item.id);
+                    let newItemId = tree.add(newItem, -1, item.id);
                     tree.open(item.id);
+                    tree.select(newItemId);
                     break;
                 case "delete":
                     webix.confirm({
@@ -213,6 +215,16 @@
                     webix.message(`"${item.value}" triggers`);
                     break;
             }
+        });
+
+        property_form.attachEvent("onAfterEditStop", function () {
+            console.log(property_form.getValues());
+        });
+        property_datablock.attachEvent("onAfterEditStop", function () {
+            console.log(property_datablock.getValues());
+        });
+        property_item.attachEvent("onAfterEditStop", function () {
+            console.log(property_item.getValues());
         });
 
     </script>
