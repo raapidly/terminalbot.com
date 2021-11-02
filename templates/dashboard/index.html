@@ -226,13 +226,13 @@
             }
         });
 
-        property_form.attachEvent("onBeforeEditStart", function () {
+        property_form.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
-        property_datablock.attachEvent("onBeforeEditStart", function () {
+        property_datablock.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
-        property_item.attachEvent("onBeforeEditStart", function () {
+        property_item.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
 
