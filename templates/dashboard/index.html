@@ -7,7 +7,7 @@
 
         let tree_icon_callback = function (item) {
             let icon_class = "webix_icon mdi "
-            switch (item._type) {
+            switch (item.$type) {
                 case "form":
                     icon_class += "mdi-application-cog-outline"
                     return `<span class="${icon_class}"></span>`
@@ -29,7 +29,7 @@
                             id: "tree", view: "tree", select: true,
                             type: {folder: tree_icon_callback},
                             data: [
-                                {_type: "form", value: "Form", data: []},
+                                {$type: "form", value: "Form", data: []},
                             ],
                         },
                         {
@@ -112,7 +112,7 @@
         })
         tree.attachEvent("onAfterSelect", function (id) {
             let item = tree.getItem(id)
-            switch (item._type) {
+            switch (item.$type) {
                 case "form":
                     property_form.show()
                     break
@@ -126,21 +126,21 @@
         })
         context_menu_form.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem()
-            return item._type === "form"
+            return item.$type === "form"
         })
         context_menu_datablock.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem()
-            return item._type === "datablock"
+            return item.$type === "datablock"
         })
         context_menu_item.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem()
-            return item._type === "item"
+            return item.$type === "item"
         })
         context_menu_form.attachEvent("onMenuItemClick", function (id) {
             let item = tree.getSelectedItem()
             switch (id) {
                 case "insert-datablock":
-                    let newItem = {_type: "datablock", value: "Data Block"}
+                    let newItem = {$type: "datablock", value: "Data Block"}
                     tree.add(newItem, -1, item.id)
                     tree.open(item.id)
                     break
@@ -153,7 +153,7 @@
             let item = tree.getSelectedItem()
             switch (id) {
                 case "insert-item":
-                    let newItem = {_type: "item", value: "Item"}
+                    let newItem = {$type: "item", value: "Item"}
                     tree.add(newItem, -1, item.id)
                     tree.open(item.id)
                     break
