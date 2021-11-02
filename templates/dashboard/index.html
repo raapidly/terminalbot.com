@@ -65,5 +65,18 @@
         context_menu_form.attachTo(tree)
         context_menu_datablock.attachTo(tree)
 
+        tree.attachEvent("onBeforeContextMenu", function (id) {
+            let item = tree.getItem(id)
+            tree.select(item.id)
+        })
+        context_menu_form.attachEvent("onBeforeShow", function () {
+            let item = tree.getSelectedItem()
+            return item._type === "form"
+        })
+        context_menu_datablock.attachEvent("onBeforeShow", function () {
+            let item = tree.getSelectedItem()
+            return item._type === "datablock"
+        })
+
     </script>
 {% endblock %}
