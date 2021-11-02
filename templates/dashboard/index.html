@@ -6,19 +6,19 @@
     <script>
 
         let tree_icon_callback = function (item) {
-            let icon_class = "webix_icon mdi "
+            let icon_class = "webix_icon mdi ";
             switch (item.$type) {
                 case "form":
-                    icon_class += "mdi-application-cog-outline"
-                    return `<span class="${icon_class}"></span>`
+                    icon_class += "mdi-application-cog-outline";
+                    return `<span class="${icon_class}"></span>`;
                 case "datablock":
-                    icon_class += "mdi-database-cog-outline"
-                    return `<span class="${icon_class}"></span>`
+                    icon_class += "mdi-database-cog-outline";
+                    return `<span class="${icon_class}"></span>`;
                 case "item":
-                    icon_class += "mdi-form-textbox"
-                    return `<span class="${icon_class}"></span>`
+                    icon_class += "mdi-form-textbox";
+                    return `<span class="${icon_class}"></span>`;
             }
-        }
+        };
 
         webix.ui({
             cols: [
@@ -57,12 +57,12 @@
                     rows: [],
                 },
             ],
-        })
+        });
 
-        const tree = $$("tree")
-        const property_form = $$("property-form")
-        const property_datablock = $$("property-datablock")
-        const property_item = $$("property-item")
+        const tree = $$("tree");
+        const property_form = $$("property-form");
+        const property_datablock = $$("property-datablock");
+        const property_item = $$("property-item");
         const context_menu_form = webix.ui({
             view: "contextmenu", width: 200,
             data: [
@@ -74,7 +74,7 @@
                 {$template: "Separator"},
                 {id: "properties", value: "Properties"},
             ],
-        })
+        });
         const context_menu_datablock = webix.ui({
             view: "contextmenu", width: 200,
             data: [
@@ -87,7 +87,7 @@
                 {$template: "Separator"},
                 {id: "properties", value: "Properties"},
             ],
-        })
+        });
         const context_menu_item = webix.ui({
             view: "contextmenu", width: 200,
             data: [
@@ -95,68 +95,68 @@
                 {$template: "Separator"},
                 {id: "properties", value: "Properties"},
             ],
-        })
+        });
 
-        context_menu_form.attachTo(tree)
-        context_menu_datablock.attachTo(tree)
-        context_menu_item.attachTo(tree)
+        context_menu_form.attachTo(tree);
+        context_menu_datablock.attachTo(tree);
+        context_menu_item.attachTo(tree);
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
-            let item = tree.getItem(id)
-            tree.select(item.id)
-        })
+            let item = tree.getItem(id);
+            tree.select(item.id);
+        });
         tree.attachEvent("onBeforeSelect", function () {
-            property_form.hide()
-            property_datablock.hide()
-            property_item.hide()
-        })
+            property_form.hide();
+            property_datablock.hide();
+            property_item.hide();
+        });
         tree.attachEvent("onAfterSelect", function (id) {
-            let item = tree.getItem(id)
+            let item = tree.getItem(id);
             switch (item.$type) {
                 case "form":
-                    property_form.show()
-                    break
+                    property_form.show();
+                    break;
                 case "datablock":
-                    property_datablock.show()
-                    break
+                    property_datablock.show();
+                    break;
                 case "item":
-                    property_item.show()
-                    break
+                    property_item.show();
+                    break;
             }
-        })
+        });
         context_menu_form.attachEvent("onBeforeShow", function () {
-            let item = tree.getSelectedItem()
-            return item.$type === "form"
-        })
+            let item = tree.getSelectedItem();
+            return item.$type === "form";
+        });
         context_menu_datablock.attachEvent("onBeforeShow", function () {
-            let item = tree.getSelectedItem()
-            return item.$type === "datablock"
-        })
+            let item = tree.getSelectedItem();
+            return item.$type === "datablock";
+        });
         context_menu_item.attachEvent("onBeforeShow", function () {
-            let item = tree.getSelectedItem()
-            return item.$type === "item"
-        })
+            let item = tree.getSelectedItem();
+            return item.$type === "item";
+        });
         context_menu_form.attachEvent("onMenuItemClick", function (id) {
-            let item = tree.getSelectedItem()
+            let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-datablock":
-                    let newItem = {$type: "datablock", value: "Data Block"}
-                    tree.add(newItem, -1, item.id)
-                    tree.open(item.id)
-                    break
+                    let newItem = {$type: "datablock", value: "Data Block"};
+                    tree.add(newItem, -1, item.id);
+                    tree.open(item.id);
+                    break;
                 case "properties":
-                    webix.message(`"${item.value}" properties`)
-                    break
+                    webix.message(`"${item.value}" properties`);
+                    break;
             }
-        })
+        });
         context_menu_datablock.attachEvent("onMenuItemClick", function (id) {
-            let item = tree.getSelectedItem()
+            let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-item":
-                    let newItem = {$type: "item", value: "Item"}
-                    tree.add(newItem, -1, item.id)
-                    tree.open(item.id)
-                    break
+                    let newItem = {$type: "item", value: "Item"};
+                    tree.add(newItem, -1, item.id);
+                    tree.open(item.id);
+                    break;
                 case "delete":
                     webix.confirm({
                         title: "Warning!",
@@ -164,16 +164,16 @@
                         text: "You are about to delete this Data Block. Are you sure?",
                         ok: "Delete",
                     }).then(function () {
-                        tree.remove(item.id)
-                    })
-                    break
+                        tree.remove(item.id);
+                    });
+                    break;
                 case "properties":
-                    webix.message(`"${item.value}" properties`)
-                    break
+                    webix.message(`"${item.value}" properties`);
+                    break;
             }
-        })
+        });
         context_menu_item.attachEvent("onMenuItemClick", function (id) {
-            let item = tree.getSelectedItem()
+            let item = tree.getSelectedItem();
             switch (id) {
                 case "delete":
                     webix.confirm({
@@ -182,14 +182,14 @@
                         text: "You are about to delete this Item. Are you sure?",
                         ok: "Delete",
                     }).then(function () {
-                        tree.remove(item.id)
-                    })
-                    break
+                        tree.remove(item.id);
+                    });
+                    break;
                 case "properties":
-                    webix.message(`"${item.value}" properties`)
-                    break
+                    webix.message(`"${item.value}" properties`);
+                    break;
             }
-        })
+        });
 
     </script>
 {% endblock %}
