@@ -35,19 +35,38 @@
                         {
                             id: "property-form", view: "property", hidden: true,
                             elements: [
-                                {type: "label", label: "Form"},
+                                {type: "label", label: "General"},
+                                {type: "text", label: "Name"},
                             ],
                         },
                         {
                             id: "property-datablock", view: "property", hidden: true,
                             elements: [
-                                {type: "label", label: "Data Block"},
+                                {type: "label", label: "General"},
+                                {type: "text", label: "Name"},
+                                {
+                                    type: "combo", label: "Type", options: [
+                                        {id: "form", value: "Form"},
+                                        {id: "tabular", value: "Tabular"},
+                                    ]
+                                },
                             ],
                         },
                         {
                             id: "property-item", view: "property", hidden: true,
                             elements: [
-                                {type: "label", label: "Item"},
+                                {type: "label", label: "General"},
+                                {type: "text", label: "Name"},
+                                {
+                                    type: "combo", label: "Type", options: [
+                                        {id: "text", value: "Text"},
+                                        {id: "numeric", value: "Numeric"},
+                                        {id: "date", value: "Date"},
+                                        {id: "datetime", value: "Date Time"},
+                                        {id: "currency", value: "Currency"},
+                                        {id: "checkbox", value: "Checkbox"},
+                                    ]
+                                },
                             ],
                         },
                     ],
