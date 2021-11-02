@@ -131,12 +131,18 @@
             let item = tree.getItem(id);
             switch (item._type) {
                 case "form":
+                    property_form.clear();
+                    property_form.setValues(item);
                     property_form.show();
                     break;
                 case "datablock":
+                    property_datablock.clear();
+                    property_datablock.setValues(item);
                     property_datablock.show();
                     break;
                 case "item":
+                    property_item.clear();
+                    property_item.setValues(item);
                     property_item.show();
                     break;
             }
@@ -218,13 +224,19 @@
         });
 
         property_form.attachEvent("onAfterEditStop", function () {
-            console.log(property_form.getValues());
+            let form_values = property_form.getValues();
+            let item = tree.getSelectedItem();
+            tree.updateItem(item.id, form_values);
         });
         property_datablock.attachEvent("onAfterEditStop", function () {
-            console.log(property_datablock.getValues());
+            let form_values = property_datablock.getValues();
+            let item = tree.getSelectedItem();
+            tree.updateItem(item.id, form_values);
         });
         property_item.attachEvent("onAfterEditStop", function () {
-            console.log(property_item.getValues());
+            let form_values = property_item.getValues();
+            let item = tree.getSelectedItem();
+            tree.updateItem(item.id, form_values);
         });
 
     </script>
