@@ -7,6 +7,6 @@ blueprint = Blueprint(
 
 
 @blueprint.route(rule='/', methods=['get'])
-@minify(html=True, js=True)
+@minify(html=True, cssless=True, js=True)
 def index():
     return render_template(template_name_or_list='login/index.html')
