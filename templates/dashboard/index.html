@@ -33,6 +33,7 @@
                             id: "property-form", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
+                                {label: "Id", id: "id"},
                                 {type: "text", label: "Name", id: "$name"},
                             ],
                         },
@@ -40,6 +41,7 @@
                             id: "property-datablock", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
+                                {label: "Id", id: "id"},
                                 {type: "text", label: "Name", id: "$name"},
                                 {
                                     type: "combo", label: "Type", id: "$type", options: [
@@ -53,6 +55,7 @@
                             id: "property-item", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
+                                {label: "Id", id: "id"},
                                 {type: "text", label: "Name", id: "$name"},
                                 {type: "text", label: "Label", id: "$label"},
                                 {
@@ -225,18 +228,15 @@
 
         property_form.attachEvent("onAfterEditStop", function () {
             let form_values = property_form.getValues();
-            let item = tree.getSelectedItem();
-            tree.updateItem(item.id, form_values);
+            tree.updateItem(form_values.id, form_values);
         });
         property_datablock.attachEvent("onAfterEditStop", function () {
             let form_values = property_datablock.getValues();
-            let item = tree.getSelectedItem();
-            tree.updateItem(item.id, form_values);
+            tree.updateItem(form_values.id, form_values);
         });
         property_item.attachEvent("onAfterEditStop", function () {
             let form_values = property_item.getValues();
-            let item = tree.getSelectedItem();
-            tree.updateItem(item.id, form_values);
+            tree.updateItem(form_values.id, form_values);
         });
 
     </script>
