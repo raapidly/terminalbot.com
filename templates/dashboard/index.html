@@ -114,7 +114,8 @@
                     webix.confirm({
                         title: "Warning!",
                         type: "confirm-warning",
-                        text: "You are about to delete Data Block. Are you sure?",
+                        text: "You are about to delete this Data Block. Are you sure?",
+                        ok: "Delete",
                     }).then(function () {
                         tree.remove(item.id)
                     })
@@ -131,7 +132,8 @@
                     webix.confirm({
                         title: "Warning!",
                         type: "confirm-warning",
-                        text: "You are about to delete Item. Are you sure?",
+                        text: "You are about to delete this Item. Are you sure?",
+                        ok: "Delete",
                     }).then(function () {
                         tree.remove(item.id)
                     })
