@@ -22,7 +22,7 @@
 
         let tree_template_callback = function (item, common) {
             let prefix_sign = `${common.icon(item, common)} ${common.folder(item, common)}`;
-            let error_sign = `<span class="webix_icon mdi mdi-cancel" style="color: red"><span>`;
+            let error_sign = `<span class="webix_icon mdi mdi-close-circle-outline" style="color: red"><span>`;
             if ((item.$name === undefined) || (item.$name === "")) {
                 return `${prefix_sign} <span>${item.value}</span> ${error_sign}`;
             }
