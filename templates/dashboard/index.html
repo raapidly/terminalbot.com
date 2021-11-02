@@ -90,6 +90,49 @@
             let item = tree.getSelectedItem()
             return item._type === "item"
         })
+        context_menu_form.attachEvent("onMenuItemClick", function (id) {
+            let item = tree.getSelectedItem()
+            switch (id) {
+                case "insert-datablock":
+                    let newItem = {_type: "datablock", value: "Data Block"}
+                    tree.add(newItem, -1, item.id)
+                    tree.open(item.id)
+                    break
+                case "delete":
+                    webix.message(`"${item.value}" delete`)
+                    break
+                case "properties":
+                    webix.message(`"${item.value}" properties`)
+                    break
+            }
+        })
+        context_menu_datablock.attachEvent("onMenuItemClick", function (id) {
+            let item = tree.getSelectedItem()
+            switch (id) {
+                case "insert-item":
+                    let newItem = {_type: "item", value: "Item"}
+                    tree.add(newItem, -1, item.id)
+                    tree.open(item.id)
+                    break
+                case "delete":
+                    webix.message(`"${item.value}" delete`)
+                    break
+                case "properties":
+                    webix.message(`"${item.value}" properties`)
+                    break
+            }
+        })
+        context_menu_item.attachEvent("onMenuItemClick", function (id) {
+            let item = tree.getSelectedItem()
+            switch (id) {
+                case "delete":
+                    webix.message(`"${item.value}" delete`)
+                    break
+                case "properties":
+                    webix.message(`"${item.value}" properties`)
+                    break
+            }
+        })
 
     </script>
 {% endblock %}
