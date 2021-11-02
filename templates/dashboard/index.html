@@ -20,14 +20,24 @@
             }
         };
 
+        let tree_template_callback = function (item, common) {
+            let prefix_sign = `${common.icon(item, common)} ${common.folder(item, common)}`;
+            let error_sign = `<span class="webix_icon mdi mdi-cancel" style="color: red"><span>`;
+            if ((item.$name === undefined) || (item.$name === "")) {
+                return `${prefix_sign} <span>${item.value}</span> ${error_sign}`;
+            }
+            return `${prefix_sign} <span>${item.value}</span>`;
+        };
+
         webix.ui({
             cols: [
                 {
                     type: "space", width: 300,
                     rows: [
                         {
-                            id: "tree", view: "tree", select: true,
-                            type: {folder: tree_folder_callback}, data: [],
+                            id: "tree", view: "tree", select: true, data: [],
+                            type: {folder: tree_folder_callback},
+                            template: tree_template_callback,
                         },
                         {
                             id: "property-form", view: "property", hidden: true,
