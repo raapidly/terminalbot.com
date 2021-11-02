@@ -116,7 +116,6 @@
         context_menu_form.attachTo(tree);
         context_menu_datablock.attachTo(tree);
         context_menu_item.attachTo(tree);
-
         tree.add({_type: "form", value: "Form"});
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
@@ -142,6 +141,7 @@
                     break;
             }
         });
+
         context_menu_form.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
             return item._type === "form";
