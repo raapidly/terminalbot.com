@@ -111,7 +111,7 @@
                     tree.open(item.id)
                     break
                 case "delete":
-                    webix.message(`"${item.value}" delete`)
+                    tree.remove(item.id)
                     break
                 case "properties":
                     webix.message(`"${item.value}" properties`)
@@ -122,7 +122,7 @@
             let item = tree.getSelectedItem()
             switch (id) {
                 case "delete":
-                    webix.message(`"${item.value}" delete`)
+                    tree.remove(item.id)
                     break
                 case "properties":
                     webix.message(`"${item.value}" properties`)
