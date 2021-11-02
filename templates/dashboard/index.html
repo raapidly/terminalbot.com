@@ -61,9 +61,18 @@
                 {id: "properties", value: "Properties"},
             ],
         })
+        const context_menu_item = webix.ui({
+            view: "contextmenu", width: 200,
+            data: [
+                {id: "delete", value: "Delete"},
+                {$template: "Separator"},
+                {id: "properties", value: "Properties"},
+            ],
+        })
 
         context_menu_form.attachTo(tree)
         context_menu_datablock.attachTo(tree)
+        context_menu_item.attachTo(tree)
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id)
@@ -76,6 +85,10 @@
         context_menu_datablock.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem()
             return item._type === "datablock"
+        })
+        context_menu_item.attachEvent("onBeforeShow", function () {
+            let item = tree.getSelectedItem()
+            return item._type === "item"
         })
 
     </script>
