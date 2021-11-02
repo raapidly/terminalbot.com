@@ -27,10 +27,7 @@
                     rows: [
                         {
                             id: "tree", view: "tree", select: true,
-                            type: {folder: tree_icon_callback},
-                            data: [
-                                {_type: "form", value: "Form", data: []},
-                            ],
+                            type: {folder: tree_icon_callback}, data: [],
                         },
                         {
                             id: "property-form", view: "property", hidden: true,
@@ -73,8 +70,7 @@
                     ],
                 },
                 {
-                    type: "space",
-                    rows: [],
+                    type: "space", rows: []
                 },
             ],
         });
@@ -120,6 +116,8 @@
         context_menu_form.attachTo(tree);
         context_menu_datablock.attachTo(tree);
         context_menu_item.attachTo(tree);
+
+        tree.add({_type: "form", value: "Form"});
 
         tree.attachEvent("onBeforeContextMenu", function (id) {
             let item = tree.getItem(id);
