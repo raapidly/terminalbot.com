@@ -164,11 +164,13 @@
             let item = tree.getItem(id);
             tree.select(item.id);
         });
+
         tree.attachEvent("onBeforeSelect", function () {
             property_form.hide();
             property_datablock.hide();
             property_item.hide();
         });
+
         tree.attachEvent("onAfterSelect", function (id) {
             let item = tree.getItem(id);
             switch (item._type) {
@@ -198,14 +200,17 @@
             let item = tree.getSelectedItem();
             return item._type === "form";
         });
+
         context_menu_datablock.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
             return item._type === "datablock";
         });
+
         context_menu_item.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
             return item._type === "item";
         });
+
         context_menu_form.attachEvent("onMenuItemClick", function (id) {
             let item = tree.getSelectedItem();
             switch (id) {
@@ -220,6 +225,7 @@
                     break;
             }
         });
+
         context_menu_datablock.attachEvent("onMenuItemClick", function (id) {
             let item = tree.getSelectedItem();
             switch (id) {
@@ -247,6 +253,7 @@
                     break;
             }
         });
+
         context_menu_item.attachEvent("onMenuItemClick", function (id) {
             let item = tree.getSelectedItem();
             switch (id) {
@@ -276,22 +283,27 @@
         property_form.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
+
         property_datablock.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
+
         property_item.attachEvent("onAfterEditStart", function () {
             tree.disable();
         });
+
         property_form.attachEvent("onAfterEditStop", function () {
             let form_values = property_form.getValues();
             tree.updateItem(form_values.id, form_values);
             tree.enable();
         });
+
         property_datablock.attachEvent("onAfterEditStop", function () {
             let form_values = property_datablock.getValues();
             tree.updateItem(form_values.id, form_values);
             tree.enable();
         });
+
         property_item.attachEvent("onAfterEditStop", function () {
             let form_values = property_item.getValues();
             tree.updateItem(form_values.id, form_values);
