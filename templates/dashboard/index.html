@@ -68,6 +68,24 @@
                     }
                     return true;
                 },
+                $type: function (value) {
+                    let allowed_values = [
+                        "text",
+                        "numeric",
+                        "date",
+                        "datetime",
+                        "currency",
+                        "checkbox",
+                    ];
+                    if (value === undefined) {
+                        return false;
+                    } else if (/^\s*$/.test(value)) {
+                        return false;
+                    } else if (!allowed_values.includes(value)) {
+                        return false;
+                    }
+                    return true;
+                },
             },
         };
 
