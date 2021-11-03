@@ -21,7 +21,7 @@
                 $name: function (value) {
                     if (value === undefined) {
                         return false;
-                    } else if (value === "") {
+                    } else if (/^\s*$/.test(value)) {
                         return false;
                     }
                     return true;
@@ -31,7 +31,7 @@
                 $name: function (value) {
                     if (value === undefined) {
                         return false;
-                    } else if (value === "") {
+                    } else if (/^\s*$/.test(value)) {
                         return false;
                     }
                     return true;
@@ -43,7 +43,7 @@
                     ];
                     if (value === undefined) {
                         return false;
-                    } else if (value === "") {
+                    } else if (/^\s*$/.test(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
                         return false;
@@ -55,7 +55,7 @@
                 $name: function (value) {
                     if (value === undefined) {
                         return false;
-                    } else if (value === "") {
+                    } else if (/^\s*$/.test(value)) {
                         return false;
                     }
                     return true;
