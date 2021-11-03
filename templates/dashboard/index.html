@@ -158,18 +158,18 @@
                             id: "property-form", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {label: "id", id: "id"},
-                                {type: "text", label: "$name", id: "$name"},
+                                {label: "#", id: "id"},
+                                {type: "text", label: "name", id: "$name"},
                             ],
                         },
                         {
                             id: "property-datablock", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {label: "id", id: "id"},
-                                {type: "text", label: "$name", id: "$name"},
+                                {label: "#", id: "id"},
+                                {type: "text", label: "name", id: "$name"},
                                 {
-                                    type: "combo", label: "$type", id: "$type", options: [
+                                    type: "combo", label: "type", id: "$type", options: [
                                         {id: "form", value: "Form"},
                                         {id: "tabular", value: "Tabular"},
                                     ]
@@ -180,11 +180,11 @@
                             id: "property-item", view: "property", hidden: true,
                             elements: [
                                 {type: "label", label: "General"},
-                                {label: "id", id: "id"},
-                                {type: "text", label: "$name", id: "$name"},
-                                {type: "text", label: "$label", id: "$label"},
+                                {label: "#", id: "id"},
+                                {type: "text", label: "name", id: "$name"},
+                                {type: "text", label: "label", id: "$label"},
                                 {
-                                    type: "combo", label: "$type", id: "$type", options: [
+                                    type: "combo", label: "type", id: "$type", options: [
                                         {id: "text", value: "Text"},
                                         {id: "numeric", value: "Numeric"},
                                         {id: "date", value: "Date"},
