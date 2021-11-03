@@ -60,6 +60,14 @@
                     }
                     return true;
                 },
+                $label: function (value) {
+                    if (value === undefined) {
+                        return false;
+                    } else if (/^\s*$/.test(value)) {
+                        return false;
+                    }
+                    return true;
+                },
             },
         };
 
@@ -99,16 +107,16 @@
             switch (item._type) {
                 case "form":
                     if (validate_item(item, property_validators.form))
-                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
+                        return `${icon_common_1} ${icon_common_2} ${item.value}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.value}`;
                 case "datablock":
                     if (validate_item(item, property_validators.datablock))
-                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
+                        return `${icon_common_1} ${icon_common_2} ${item.value}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.value}`;
                 case "item":
                     if (validate_item(item, property_validators.item))
-                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
+                        return `${icon_common_1} ${icon_common_2} ${item.value}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.value}`;
             }
         };
 
