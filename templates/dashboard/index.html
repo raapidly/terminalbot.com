@@ -5,7 +5,7 @@
 {% block body %}
 
     <style>
-        .webix_icon.custom_icon_red {
+        .custom_error_icon .webix_icon {
             color: red !important;
         }
     </style>
@@ -13,8 +13,70 @@
     <script>
 
         /*==============================================================================================================
+         ======================================== Validators
+         =============================================================================================================*/
+
+        const property_validators = {
+            form: {
+                $name: function (value) {
+                    if (value === undefined) {
+                        return false;
+                    } else if (value === "") {
+                        return false;
+                    }
+                    return true;
+                },
+            },
+            datablock: {
+                $name: function (value) {
+                    if (value === undefined) {
+                        return false;
+                    } else if (value === "") {
+                        return false;
+                    }
+                    return true;
+                },
+                $type: function (value) {
+                    let allowed_values = [
+                        "form",
+                        "tabular",
+                    ];
+                    if (value === undefined) {
+                        return false;
+                    } else if (value === "") {
+                        return false;
+                    } else if (!allowed_values.includes(value)) {
+                        return false;
+                    }
+                    return true;
+                },
+            },
+            item: {
+                $name: function (value) {
+                    if (value === undefined) {
+                        return false;
+                    } else if (value === "") {
+                        return false;
+                    }
+                    return true;
+                },
+            },
+        };
+
+        /*==============================================================================================================
          ======================================== Functions
          =============================================================================================================*/
+
+        let validate_item = function (item, validators) {
+            for (let validator_key in validators) {
+                let validate_property = validators[validator_key];
+                let property_value = item[validator_key];
+                if (validate_property(property_value) === false) {
+                    return false;
+                }
+            }
+            return true;
+        };
 
         let tree_folder_callback = function (item) {
             let icon_class = "webix_icon mdi ";
@@ -32,13 +94,26 @@
         };
 
         let tree_template_callback = function (item, common) {
-            let icon_class = "webix_icon custom_icon_red mdi mdi-close-circle-outline";
-            let prefix_sign = `${common.icon(item, common)} ${common.folder(item, common)}`;
-            let error_sign = `<span class="${icon_class}"><span>`;
-            if ((item.$name === undefined) || (item.$name === "")) {
-                return `${prefix_sign} <span>${item.value}</span> ${error_sign}`;
+            let icon_class = "custom_error_icon";
+            let icon_common_1 = common.icon(item, common);
+            let icon_common_2 = common.folder(item, common);
+            switch (item._type) {
+                case "form":
+                    if (validate_item(item, property_validators.form)) {
+                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
+                    }
+                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
+                case "datablock":
+                    if (validate_item(item, property_validators.datablock)) {
+                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
+                    }
+                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
+                case "item":
+                    if (validate_item(item, property_validators.item)) {
+                        return `${icon_common_1} ${icon_common_2} ${item.$name}`;
+                    }
+                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
             }
-            return `${prefix_sign} <span>${item.value}</span>`;
         };
 
         /*==============================================================================================================
