@@ -94,25 +94,22 @@
         };
 
         let tree_template_callback = function (item, common) {
-            let icon_class = "custom_error_icon ";
             let icon_common_1 = common.icon(item, common);
             let icon_common_2 = common.folder(item, common);
+            let icon_common_2_error = `<span class="custom_error_icon">${common.folder(item, common)}</span>`;
             switch (item._type) {
                 case "form":
-                    if (validate_item(item, property_validators.form)) {
+                    if (validate_item(item, property_validators.form))
                         return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    }
-                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
                 case "datablock":
-                    if (validate_item(item, property_validators.datablock)) {
+                    if (validate_item(item, property_validators.datablock))
                         return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    }
-                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
                 case "item":
-                    if (validate_item(item, property_validators.item)) {
+                    if (validate_item(item, property_validators.item))
                         return `${icon_common_1} ${icon_common_2} ${item.$name}`;
-                    }
-                    return `${icon_common_1} <span class="${icon_class}">${icon_common_2}</span> ${item.$name}`;
+                    return `${icon_common_1} ${icon_common_2_error} ${item.$name}`;
             }
         };
 
