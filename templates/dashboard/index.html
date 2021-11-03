@@ -312,10 +312,10 @@
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-datablock":
-                    let newItem = {_type: "datablock", value: "Data Block"};
-                    let newItemId = tree.add(newItem, -1, item.id);
+                    let new_item = {_type: "datablock", value: "Data Block"};
+                    let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
-                    tree.select(newItemId);
+                    tree.select(new_item_id);
                     break;
                 case "triggers":
                     webix.message(`"${item.value}" triggers`);
@@ -327,10 +327,10 @@
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-item":
-                    let newItem = {_type: "item", value: "Item"};
-                    let newItemId = tree.add(newItem, -1, item.id);
+                    let new_item = {_type: "item", value: "Item"};
+                    let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
-                    tree.select(newItemId);
+                    tree.select(new_item_id);
                     break;
                 case "delete":
                     webix.confirm({
@@ -411,8 +411,9 @@
          ======================================== View Constructor
          =============================================================================================================*/
 
-        let form_id = tree.add({_type: "form", value: "Form"});
-        tree.select(form_id);
+        let item_id = tree.add({_type: "form", value: "Form"});
+        tree.open(item_id);
+        tree.select(item_id);
 
     </script>
 
