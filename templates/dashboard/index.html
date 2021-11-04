@@ -69,9 +69,10 @@
                     return true;
                 },
                 $label: function (value) {
-                    if (value === undefined) {
+                    let valid_regex = /^.*$/;
+                    if (basic_validators.isEmpty(value)) {
                         return false;
-                    } else if (/^\s*$/.test(value)) {
+                    } else if (!valid_regex.test(value)) {
                         return false;
                     }
                     return true;
