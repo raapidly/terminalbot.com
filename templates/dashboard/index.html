@@ -49,13 +49,8 @@
                     return true;
                 },
                 $type: function (value) {
-                    let allowed_values = [
-                        "form",
-                        "tabular",
-                    ];
-                    if (value === undefined) {
-                        return false;
-                    } else if (/^\s*$/.test(value)) {
+                    let allowed_values = ["form", "tabular"];
+                    if (basic_validators.isEmpty(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
                         return false;
@@ -82,17 +77,8 @@
                     return true;
                 },
                 $type: function (value) {
-                    let allowed_values = [
-                        "text",
-                        "numeric",
-                        "date",
-                        "datetime",
-                        "currency",
-                        "checkbox",
-                    ];
-                    if (value === undefined) {
-                        return false;
-                    } else if (/^\s*$/.test(value)) {
+                    let allowed_values = ["text", "numeric", "date", "datetime", "currency", "checkbox"];
+                    if (basic_validators.isEmpty(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
                         return false;
