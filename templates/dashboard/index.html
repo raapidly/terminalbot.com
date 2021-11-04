@@ -16,12 +16,23 @@
          ======================================== Validators
          =============================================================================================================*/
 
+        const basic_validators = {
+            isEmpty: function (value) {
+                if (value === undefined) {
+                    return true;
+                } else if (/^\s*$/.test(value)) {
+                    return true;
+                }
+                return false;
+            },
+        };
         const property_validators = {
             form: {
                 $name: function (value) {
-                    if (value === undefined) {
+                    let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
+                    if (basic_validators.isEmpty(value)) {
                         return false;
-                    } else if (/^\s*$/.test(value)) {
+                    } else if (!valid_regex.test(value)) {
                         return false;
                     }
                     return true;
@@ -29,9 +40,10 @@
             },
             datablock: {
                 $name: function (value) {
-                    if (value === undefined) {
+                    let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
+                    if (basic_validators.isEmpty(value)) {
                         return false;
-                    } else if (/^\s*$/.test(value)) {
+                    } else if (!valid_regex.test(value)) {
                         return false;
                     }
                     return true;
@@ -53,9 +65,10 @@
             },
             item: {
                 $name: function (value) {
-                    if (value === undefined) {
+                    let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
+                    if (basic_validators.isEmpty(value)) {
                         return false;
-                    } else if (/^\s*$/.test(value)) {
+                    } else if (!valid_regex.test(value)) {
                         return false;
                     }
                     return true;
