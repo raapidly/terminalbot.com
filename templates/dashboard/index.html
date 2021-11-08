@@ -320,7 +320,7 @@
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-datablock":
-                    let new_item = {_type: "datablock", value: "Data Block"};
+                    let new_item = {_type: "datablock"};
                     let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
                     tree.select(new_item_id);
@@ -335,7 +335,7 @@
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-item":
-                    let new_item = {_type: "item", value: "Item"};
+                    let new_item = {_type: "item"};
                     let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
                     tree.select(new_item_id);
@@ -419,7 +419,7 @@
          ======================================== View Constructor
          =============================================================================================================*/
 
-        let item_id = tree.add({_type: "form", value: "Form"});
+        let item_id = tree.add({_type: "form"});
         let content_id = content.addView({
             view: "scrollview", scroll: "xy", body: {},
         });
