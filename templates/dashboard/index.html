@@ -155,42 +155,46 @@
                         },
                         {view: "resizer"},
                         {
-                            id: "property-form", view: "property", hidden: true, minHeight: 150,
-                            elements: [
-                                {type: "label", label: "General"},
-                                {label: "#", id: "id"},
-                                {type: "text", label: "name", id: "$name"},
-                            ],
-                        },
-                        {
-                            id: "property-datablock", view: "property", hidden: true, minHeight: 150,
-                            elements: [
-                                {type: "label", label: "General"},
-                                {label: "#", id: "id"},
-                                {type: "text", label: "name", id: "$name"},
+                            rows: [
                                 {
-                                    type: "combo", label: "type", id: "$type", options: [
-                                        {id: "form", value: "Form"},
-                                        {id: "tabular", value: "Tabular"},
+                                    id: "property-form", view: "property", hidden: true, minHeight: 150,
+                                    elements: [
+                                        {type: "label", label: "General"},
+                                        {label: "#", id: "id"},
+                                        {type: "text", label: "name", id: "$name"},
                                     ],
                                 },
-                            ],
-                        },
-                        {
-                            id: "property-item", view: "property", hidden: true, minHeight: 150,
-                            elements: [
-                                {type: "label", label: "General"},
-                                {label: "#", id: "id"},
-                                {type: "text", label: "name", id: "$name"},
-                                {type: "text", label: "label", id: "$label"},
                                 {
-                                    type: "combo", label: "type", id: "$type", options: [
-                                        {id: "text", value: "Text"},
-                                        {id: "numeric", value: "Numeric"},
-                                        {id: "date", value: "Date"},
-                                        {id: "datetime", value: "Date Time"},
-                                        {id: "currency", value: "Currency"},
-                                        {id: "checkbox", value: "Checkbox"},
+                                    id: "property-datablock", view: "property", hidden: true, minHeight: 150,
+                                    elements: [
+                                        {type: "label", label: "General"},
+                                        {label: "#", id: "id"},
+                                        {type: "text", label: "name", id: "$name"},
+                                        {
+                                            type: "combo", label: "type", id: "$type", options: [
+                                                {id: "form", value: "Form"},
+                                                {id: "tabular", value: "Tabular"},
+                                            ],
+                                        },
+                                    ],
+                                },
+                                {
+                                    id: "property-item", view: "property", hidden: true, minHeight: 150,
+                                    elements: [
+                                        {type: "label", label: "General"},
+                                        {label: "#", id: "id"},
+                                        {type: "text", label: "name", id: "$name"},
+                                        {type: "text", label: "label", id: "$label"},
+                                        {
+                                            type: "combo", label: "type", id: "$type", options: [
+                                                {id: "text", value: "Text"},
+                                                {id: "numeric", value: "Numeric"},
+                                                {id: "date", value: "Date"},
+                                                {id: "datetime", value: "Date Time"},
+                                                {id: "currency", value: "Currency"},
+                                                {id: "checkbox", value: "Checkbox"},
+                                            ],
+                                        },
                                     ],
                                 },
                             ],
