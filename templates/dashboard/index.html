@@ -105,7 +105,7 @@
 
         let tree_folder_callback = function (item) {
             let icon_class = "webix_icon mdi ";
-            switch (item.$$type) {
+            switch (item.$$kind) {
                 case "form":
                     icon_class += "mdi-application-cog-outline";
                     return `<span class="${icon_class}"></span>`;
@@ -124,7 +124,7 @@
             let icon_common_2_error = `<span class="custom_error_icon">${common.folder(item, common)}</span>`;
             if (item.$name === undefined)
                 item.$name = "";
-            switch (item.$$type) {
+            switch (item.$$kind) {
                 case "form":
                     if (validate_item(item, property_validators.form))
                         return `${icon_common_1} ${icon_common_2} ${item.$name}`;
@@ -278,7 +278,7 @@
 
         tree.attachEvent("onAfterSelect", function (id) {
             let item = tree.getItem(id);
-            switch (item.$$type) {
+            switch (item.$$kind) {
                 case "form":
                     property_form.clear();
                     property_form.setValues(item);
@@ -303,24 +303,24 @@
 
         context_menu_form.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
-            return item.$$type === "form";
+            return item.$$kind === "form";
         });
 
         context_menu_datablock.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
-            return item.$$type === "datablock";
+            return item.$$kind === "datablock";
         });
 
         context_menu_item.attachEvent("onBeforeShow", function () {
             let item = tree.getSelectedItem();
-            return item.$$type === "item";
+            return item.$$kind === "item";
         });
 
         context_menu_form.attachEvent("onMenuItemClick", function (id) {
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-datablock":
-                    let new_item = {$$type: "datablock"};
+                    let new_item = {$$kind: "datablock"};
                     let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
                     tree.select(new_item_id);
@@ -335,7 +335,7 @@
             let item = tree.getSelectedItem();
             switch (id) {
                 case "insert-item":
-                    let new_item = {$$type: "item"};
+                    let new_item = {$$kind: "item"};
                     let new_item_id = tree.add(new_item, -1, item.id);
                     tree.open(item.id);
                     tree.select(new_item_id);
@@ -421,7 +421,7 @@
          ======================================== View Constructor
          =============================================================================================================*/
 
-        let item_id = tree.add({$$type: "form"});
+        let item_id = tree.add({$$kind: "form"});
         let content_id = content.addView({
             view: "scrollview", scroll: "xy", body: {},
         });
