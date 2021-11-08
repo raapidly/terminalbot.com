@@ -271,6 +271,9 @@
         });
 
         tree.attachEvent("onBeforeSelect", function () {
+            property_form.editStop();
+            property_datablock.editStop();
+            property_item.editStop();
             property_form.hide();
             property_datablock.hide();
             property_item.hide();
@@ -388,34 +391,19 @@
          ======================================== Property Event
          =============================================================================================================*/
 
-        property_form.attachEvent("onAfterEditStart", function () {
-            tree.disable();
-        });
-
-        property_datablock.attachEvent("onAfterEditStart", function () {
-            tree.disable();
-        });
-
-        property_item.attachEvent("onAfterEditStart", function () {
-            tree.disable();
-        });
-
         property_form.attachEvent("onAfterEditStop", function () {
             let form_values = property_form.getValues();
             tree.updateItem(form_values.id, form_values);
-            tree.enable();
         });
 
         property_datablock.attachEvent("onAfterEditStop", function () {
             let form_values = property_datablock.getValues();
             tree.updateItem(form_values.id, form_values);
-            tree.enable();
         });
 
         property_item.attachEvent("onAfterEditStop", function () {
             let form_values = property_item.getValues();
             tree.updateItem(form_values.id, form_values);
-            tree.enable();
         });
 
         /*==============================================================================================================
