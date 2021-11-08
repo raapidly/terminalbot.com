@@ -68,7 +68,7 @@
                     }
                     return true;
                 },
-                $label: function (value) {
+                $$label: function (value) {
                     let valid_regex = /^.*$/;
                     if (basic_validators.isEmpty(value)) {
                         return false;
@@ -186,7 +186,7 @@
                                         {type: "label", label: "General"},
                                         {label: "#", id: "id"},
                                         {type: "text", label: "name", id: "$$name"},
-                                        {type: "text", label: "label", id: "$label"},
+                                        {type: "text", label: "label", id: "$$label"},
                                         {
                                             type: "combo", label: "type", id: "$$type", options: [
                                                 {id: "text", value: "Text"},
