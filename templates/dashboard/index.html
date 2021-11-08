@@ -274,23 +274,23 @@
             property_form.hide();
             property_datablock.hide();
             property_item.hide();
+            property_form.clear();
+            property_datablock.clear();
+            property_item.clear();
         });
 
         tree.attachEvent("onAfterSelect", function (id) {
             let item = tree.getItem(id);
             switch (item.$$kind) {
                 case "form":
-                    property_form.clear();
                     property_form.setValues(item);
                     property_form.show();
                     break;
                 case "datablock":
-                    property_datablock.clear();
                     property_datablock.setValues(item);
                     property_datablock.show();
                     break;
                 case "item":
-                    property_item.clear();
                     property_item.setValues(item);
                     property_item.show();
                     break;
