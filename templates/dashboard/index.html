@@ -145,9 +145,10 @@
          =============================================================================================================*/
 
         webix.ui({
+            type: "space",
             cols: [
                 {
-                    type: "space", width: 300,
+                    type: "wide", width: 300,
                     rows: [
                         {
                             id: "tree", view: "tree", select: true, minHeight: 150, data: [],
@@ -201,6 +202,7 @@
                         },
                     ],
                 },
+                {view: "resizer"},
                 {
                     rows: [],
                 },
