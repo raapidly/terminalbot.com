@@ -82,7 +82,7 @@
                     return true;
                 },
                 $$type: function (value) {
-                    let allowed_values = ["text", "numeric", "date", "datetime", "checkbox"];
+                    let allowed_values = ["text", "numeric", "date", "datetime", "time", "checkbox"];
                     if (basic_validators.isEmpty(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
@@ -196,6 +196,7 @@
                                                 {id: "numeric", value: "Numeric"},
                                                 {id: "date", value: "Date"},
                                                 {id: "datetime", value: "Date & Time"},
+                                                {id: "time", value: "Time"},
                                                 {id: "checkbox", value: "Checkbox"},
                                             ],
                                         },
