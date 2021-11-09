@@ -53,7 +53,7 @@
                     return true;
                 },
                 $$type: function (value) {
-                    let allowed_values = ["form", "tabular"];
+                    let allowed_values = ["form"];
                     if (basic_validators.isEmpty(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
@@ -82,7 +82,7 @@
                     return true;
                 },
                 $$type: function (value) {
-                    let allowed_values = ["text", "numeric", "date", "datetime", "currency", "checkbox"];
+                    let allowed_values = ["text", "numeric", "date", "datetime", "checkbox"];
                     if (basic_validators.isEmpty(value)) {
                         return false;
                     } else if (!allowed_values.includes(value)) {
@@ -179,7 +179,6 @@
                                         {
                                             type: "combo", label: "type", id: "$$type", options: [
                                                 {id: "form", value: "Form"},
-                                                {id: "tabular", value: "Tabular"},
                                             ],
                                         },
                                     ],
@@ -196,8 +195,7 @@
                                                 {id: "text", value: "Text"},
                                                 {id: "numeric", value: "Numeric"},
                                                 {id: "date", value: "Date"},
-                                                {id: "datetime", value: "Date Time"},
-                                                {id: "currency", value: "Currency"},
+                                                {id: "datetime", value: "Date & Time"},
                                                 {id: "checkbox", value: "Checkbox"},
                                             ],
                                         },
