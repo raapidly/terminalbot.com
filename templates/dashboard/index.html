@@ -415,14 +415,26 @@
 
         let item_id = tree.add({$$kind: "form"});
         let content_id = content.addView({
-            view: "accordion", type: "wide", multi: true,
-            rows: [
-                {
-                    header: "Form", body: {
-                        view: "scrollview", scroll: "auto", body: {},
+            view: "scrollview", scroll: "y",
+            body: {
+                type: "space",
+                rows: [
+                    {
+                        height: 500,
+                        rows: [
+                            {view: "template", type: "header", template: "Master"},
+                            {view: "scrollview", scroll: "auto", body: {}},
+                        ],
                     },
-                },
-            ],
+                    {
+                        height: 500,
+                        rows: [
+                            {view: "template", type: "header", template: "Detail"},
+                            {view: "scrollview", scroll: "auto", body: {}},
+                        ],
+                    },
+                ],
+            },
         });
 
         tree.open(item_id);
