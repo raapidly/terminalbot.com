@@ -107,40 +107,41 @@
             return true;
         };
 
-        let tree_folder_callback = function (item) {
-            let icon_class = "webix_icon mdi ";
-            switch (item.$$kind) {
-                case "form":
-                    icon_class += "mdi-application-outline";
-                    return `<span class="${icon_class}"></span>`;
-                case "datablock":
-                    icon_class += "mdi-database-outline";
-                    return `<span class="${icon_class}"></span>`;
-                case "item":
-                    icon_class += "mdi-form-textbox";
-                    return `<span class="${icon_class}"></span>`;
-            }
-        };
-
-        let tree_template_callback = function (item, common) {
-            let icon_common_1 = common.icon(item, common);
-            let icon_common_2 = common.folder(item, common);
-            let icon_common_2_error = `<span class="custom_icon_error">${common.folder(item, common)}</span>`;
-            if (item.$$name === undefined)
-                item.$$name = "";
-            switch (item.$$kind) {
-                case "form":
-                    if (validate_item(item, property_validators.form))
-                        return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
-                case "datablock":
-                    if (validate_item(item, property_validators.datablock))
-                        return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
-                case "item":
-                    if (validate_item(item, property_validators.item))
-                        return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                    return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+        const tree_callback = {
+            folder: function (item) {
+                let icon_class = "webix_icon mdi ";
+                switch (item.$$kind) {
+                    case "form":
+                        icon_class += "mdi-application-outline";
+                        return `<span class="${icon_class}"></span>`;
+                    case "datablock":
+                        icon_class += "mdi-database-outline";
+                        return `<span class="${icon_class}"></span>`;
+                    case "item":
+                        icon_class += "mdi-form-textbox";
+                        return `<span class="${icon_class}"></span>`;
+                }
+            },
+            template: function (item, common) {
+                let icon_common_1 = common.icon(item, common);
+                let icon_common_2 = common.folder(item, common);
+                let icon_common_2_error = `<span class="custom_icon_error">${common.folder(item, common)}</span>`;
+                if (item.$$name === undefined)
+                    item.$$name = "";
+                switch (item.$$kind) {
+                    case "form":
+                        if (validate_item(item, property_validators.form))
+                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                    case "datablock":
+                        if (validate_item(item, property_validators.datablock))
+                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                    case "item":
+                        if (validate_item(item, property_validators.item))
+                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                }
             }
         };
 
@@ -156,8 +157,8 @@
                     rows: [
                         {
                             id: "tree", view: "tree", select: true, minHeight: 175, data: [],
-                            type: {folder: tree_folder_callback},
-                            template: tree_template_callback,
+                            type: {folder: tree_callback.folder},
+                            template: tree_callback.template,
                         },
                         {view: "resizer"},
                         {
