@@ -21,10 +21,10 @@
          =============================================================================================================*/
 
         const validator = {
-            validate_item: function (item, validators) {
+            validate_item: function (properties, validators) {
                 for (let validator_key in validators) {
                     let validate_property = validators[validator_key];
-                    let property_value = item[validator_key];
+                    let property_value = properties[validator_key];
                     if (validate_property(property_value) === false)
                         return false;
                 }
