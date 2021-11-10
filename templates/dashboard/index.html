@@ -20,7 +20,7 @@
          ======================================== Validators
          =============================================================================================================*/
 
-        const validator = {
+        const validators = {
             validate_properties: function (properties, validators) {
                 for (let validator_key in validators) {
                     let validate_property = validators[validator_key];
@@ -132,15 +132,15 @@
                         item.$$name = "";
                     switch (item.$$kind) {
                         case "form":
-                            if (validator.validate_properties(item, properties_validators.form))
+                            if (validators.validate_properties(item, properties_validators.form))
                                 return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                             return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                         case "datablock":
-                            if (validator.validate_properties(item, properties_validators.datablock))
+                            if (validators.validate_properties(item, properties_validators.datablock))
                                 return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                             return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                         case "item":
-                            if (validator.validate_properties(item, properties_validators.item))
+                            if (validators.validate_properties(item, properties_validators.item))
                                 return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                             return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                     }
