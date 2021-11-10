@@ -41,7 +41,7 @@
                 return false;
             },
         };
-        const property_validators = {
+        const properties_validators = {
             form: {
                 $$name: function (value) {
                     let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
@@ -131,15 +131,15 @@
                     item.$$name = "";
                 switch (item.$$kind) {
                     case "form":
-                        if (validator.validate_properties(item, property_validators.form))
+                        if (validator.validate_properties(item, properties_validators.form))
                             return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                     case "datablock":
-                        if (validator.validate_properties(item, property_validators.datablock))
+                        if (validator.validate_properties(item, properties_validators.datablock))
                             return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                     case "item":
-                        if (validator.validate_properties(item, property_validators.item))
+                        if (validator.validate_properties(item, properties_validators.item))
                             return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
                 }
