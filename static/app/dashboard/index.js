@@ -418,6 +418,9 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     let item_id = ui_tree.add({$$kind: "form"});
+    ui_tree.open(item_id);
+    ui_tree.select(item_id);
+
     ui_content.addView({
         minHeight: 500,
         rows: [
@@ -432,8 +435,5 @@ window.$tb["show"] = function () {
             {view: "scrollview", scroll: "auto", body: {}},
         ],
     });
-
-    ui_tree.open(item_id);
-    ui_tree.select(item_id);
 
 };
