@@ -233,24 +233,24 @@ window.$tb["show"] = function () {
                 cols: [
                     {
                         view: "icon", icon: "mdi mdi-monitor-dashboard", tooltip: "Dashboard",
-                        borderless: false
+                        borderless: false,
                     },
                     {
                         view: "icon", icon: "mdi mdi-content-save-all-outline", tooltip: "Save",
-                        borderless: false
+                        borderless: false,
                     },
                     {
                         view: "icon", icon: "mdi mdi-notebook-plus-outline", tooltip: "New",
-                        borderless: false
+                        borderless: false,
                     },
                     {
                         view: "icon", icon: "mdi mdi-folder-open-outline", tooltip: "Open",
-                        borderless: false
+                        borderless: false,
                     },
                     {},
                     {
                         view: "icon", icon: "mdi mdi-application-braces-outline", tooltip: "Source Code",
-                        borderless: false
+                        borderless: false,
                     },
                 ],
             },
