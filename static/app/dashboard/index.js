@@ -138,7 +138,7 @@ window.$tb["show"] = function () {
             id: "ui-tree", view: "tree", select: true, minHeight: 175, data: [],
             type: {folder: ui_functions.tree.folder},
             template: ui_functions.tree.template,
-        }
+        },
     };
 
     /*==============================================================================================================
