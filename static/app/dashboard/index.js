@@ -227,32 +227,48 @@ window.$tb["show"] = function () {
 
     webix.ui({
         type: "space",
-        cols: [
+        rows: [
             {
-                type: "wide", width: 250, minWidth: 250, maxWidth: 450,
-                rows: [
-                    view_objects.tree,
+                view: "toolbar",
+                cols: [
+                    {view: "icon", icon: "mdi mdi-home-outline", tooltip: "Home"},
+                    {view: "icon", icon: "mdi mdi-content-save-all-outline", tooltip: "Save"},
+                    {view: "icon", icon: "mdi mdi-notebook-plus-outline", tooltip: "Create"},
+                    {view: "icon", icon: "mdi mdi-folder-open-outline", tooltip: "Open"},
+                    {},
+                    {view: "icon", icon: "mdi mdi-application-braces-outline", tooltip: "Source Code"},
+                ],
+            },
+            {
+                type: "wide",
+                cols: [
+                    {
+                        type: "wide", width: 250, minWidth: 250, maxWidth: 450,
+                        rows: [
+                            view_objects.tree,
+                            {view: "resizer"},
+                            {
+                                minHeight: 175,
+                                rows: [
+                                    view_objects.property_form,
+                                    view_objects.property_datablock,
+                                    view_objects.property_item,
+                                ],
+                            },
+                        ],
+                    },
                     {view: "resizer"},
                     {
-                        minHeight: 175,
+                        type: "wide",
                         rows: [
-                            view_objects.property_form,
-                            view_objects.property_datablock,
-                            view_objects.property_item,
+                            {
+                                view: "scrollview", scroll: "y",
+                                body: view_objects.content,
+                            },
                         ],
                     },
                 ],
-            },
-            {view: "resizer"},
-            {
-                type: "wide",
-                rows: [
-                    {
-                        view: "scrollview", scroll: "y",
-                        body: view_objects.content,
-                    },
-                ],
-            },
+            }
         ],
     });
     webix.ui(view_objects.context_form);
