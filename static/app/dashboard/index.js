@@ -353,6 +353,7 @@ window.$tb["show"] = function () {
         });
         ui_window.attachEvent("onHide", function () {
             ui_master.enable();
+            ui_window.destructor();
         });
 
         ui_window.show();
