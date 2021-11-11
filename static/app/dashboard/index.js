@@ -198,7 +198,17 @@ window.$tb["show"] = function () {
                 ],
             },
             {view: "resizer"},
-            {id: "content", type: "wide", rows: []},
+            {
+                type: "wide",
+                rows: [
+                    {
+                        view: "scrollview", scroll: "y",
+                        body: {
+                            id: "content", type: "space", rows: [],
+                        },
+                    },
+                ],
+            },
         ],
     });
 
@@ -403,27 +413,19 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     let item_id = tree.add({$$kind: "form"});
-    let content_id = content.addView({
-        view: "scrollview", scroll: "y",
-        body: {
-            type: "space",
-            rows: [
-                {
-                    minHeight: 500,
-                    rows: [
-                        {view: "template", type: "header", template: "Master"},
-                        {view: "scrollview", scroll: "auto", body: {}},
-                    ],
-                },
-                {
-                    minHeight: 500,
-                    rows: [
-                        {view: "template", type: "header", template: "Detail"},
-                        {view: "scrollview", scroll: "auto", body: {}},
-                    ],
-                },
-            ],
-        },
+    content.addView({
+        minHeight: 500,
+        rows: [
+            {view: "template", type: "header", template: "Master"},
+            {view: "scrollview", scroll: "auto", body: {}},
+        ],
+    });
+    content.addView({
+        minHeight: 500,
+        rows: [
+            {view: "template", type: "header", template: "Detail"},
+            {view: "scrollview", scroll: "auto", body: {}},
+        ],
     });
 
     tree.open(item_id);
