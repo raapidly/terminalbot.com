@@ -96,9 +96,9 @@ window.$tb["show"] = function () {
 
     const ui_functions = {
         tree: {
-            folder: function (item) {
+            folder: function (component) {
                 let icon_class = "webix_icon mdi ";
-                switch (item.$$kind) {
+                switch (component.$$kind) {
                     case "form":
                         icon_class += "mdi-application-outline";
                         return `<span class="${icon_class}"></span>`;
@@ -110,25 +110,25 @@ window.$tb["show"] = function () {
                         return `<span class="${icon_class}"></span>`;
                 }
             },
-            template: function (item, common) {
-                let icon_common_1 = common.icon(item, common);
-                let icon_common_2 = common.folder(item, common);
-                let icon_common_2_error = `<span class="custom_icon_error">${common.folder(item, common)}</span>`;
-                if (item.$$name === undefined)
-                    item.$$name = "";
-                switch (item.$$kind) {
+            template: function (component, common) {
+                let icon_common_1 = common.icon(component, common);
+                let icon_common_2 = common.folder(component, common);
+                let icon_common_2_error = `<span class="custom_icon_error">${common.folder(component, common)}</span>`;
+                if (component.$$name === undefined)
+                    component.$$name = "";
+                switch (component.$$kind) {
                     case "form":
-                        if (validators.validate_properties(item, properties_validators.form))
-                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                        if (validators.validate_properties(component, properties_validators.form))
+                            return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "datablock":
-                        if (validators.validate_properties(item, properties_validators.datablock))
-                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                        if (validators.validate_properties(component, properties_validators.datablock))
+                            return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "item":
-                        if (validators.validate_properties(item, properties_validators.item))
-                            return `${icon_common_1} ${icon_common_2} ${item.$$name}`;
-                        return `${icon_common_1} ${icon_common_2_error} ${item.$$name}`;
+                        if (validators.validate_properties(component, properties_validators.item))
+                            return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
+                        return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                 }
             }
         }
