@@ -268,18 +268,17 @@ window.$tb["show"] = function () {
     const ui_property_form = $$("ui-property-form");
     const ui_property_datablock = $$("ui-property-datablock");
     const ui_property_item = $$("ui-property-item");
-
-    const context_menu_form = $$("ui-context-form");
-    const context_menu_datablock = $$("ui-context-datablock");
-    const context_menu_item = $$("ui-context-item");
+    const ui_context_form = $$("ui-context-form");
+    const ui_context_datablock = $$("ui-context-datablock");
+    const ui_context_item = $$("ui-context-item");
 
     /*==============================================================================================================
      ======================================== View Binding
      =============================================================================================================*/
 
-    context_menu_form.attachTo(ui_tree);
-    context_menu_datablock.attachTo(ui_tree);
-    context_menu_item.attachTo(ui_tree);
+    ui_context_form.attachTo(ui_tree);
+    ui_context_datablock.attachTo(ui_tree);
+    ui_context_item.attachTo(ui_tree);
 
     /*==============================================================================================================
      ======================================== Tree Event
@@ -325,22 +324,22 @@ window.$tb["show"] = function () {
      ======================================== Context Menu Event
      =============================================================================================================*/
 
-    context_menu_form.attachEvent("onBeforeShow", function () {
+    ui_context_form.attachEvent("onBeforeShow", function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "form";
     });
 
-    context_menu_datablock.attachEvent("onBeforeShow", function () {
+    ui_context_datablock.attachEvent("onBeforeShow", function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "datablock";
     });
 
-    context_menu_item.attachEvent("onBeforeShow", function () {
+    ui_context_item.attachEvent("onBeforeShow", function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "item";
     });
 
-    context_menu_form.attachEvent("onMenuItemClick", function (id) {
+    ui_context_form.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
             case "insert-datablock":
@@ -355,7 +354,7 @@ window.$tb["show"] = function () {
         }
     });
 
-    context_menu_datablock.attachEvent("onMenuItemClick", function (id) {
+    ui_context_datablock.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
             case "insert-item":
@@ -384,7 +383,7 @@ window.$tb["show"] = function () {
         }
     });
 
-    context_menu_item.attachEvent("onMenuItemClick", function (id) {
+    ui_context_item.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
             case "delete":
