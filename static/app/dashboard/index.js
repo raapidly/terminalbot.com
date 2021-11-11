@@ -332,7 +332,27 @@ window.$tb["show"] = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
-        ui_master.disable();
+        webix.ui({
+            id: "ui-window", view: "window", position: "center",
+            width: 600, height: 400,
+            head: {
+                view: "toolbar",
+                cols: [
+                    {width: 5},
+                    {view: "label", label: "Source Code"},
+                    {},
+                ],
+            },
+            body: {},
+        });
+
+        let ui_window = $$("ui-window");
+
+        ui_window.attachEvent("onShow", function () {
+            ui_master.disable();
+        });
+
+        ui_window.show();
     });
 
     /*==============================================================================================================
