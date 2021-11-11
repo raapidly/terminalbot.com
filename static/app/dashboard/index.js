@@ -161,6 +161,25 @@ window.$tb["show"] = function () {
                 },
             ],
         },
+        property_item: {
+            id: "ui-property-item", view: "property", hidden: true,
+            elements: [
+                {type: "label", label: "General"},
+                {label: "#", id: "id"},
+                {type: "text", label: "name", id: "$$name"},
+                {type: "text", label: "label", id: "$$label"},
+                {
+                    type: "combo", label: "type", id: "$$type", options: [
+                        {id: "text", value: "Text"},
+                        {id: "numeric", value: "Numeric"},
+                        {id: "date", value: "Date"},
+                        {id: "datetime", value: "Date & Time"},
+                        {id: "time", value: "Time"},
+                        {id: "checkbox", value: "Checkbox"},
+                    ],
+                },
+            ],
+        },
     };
 
     /*==============================================================================================================
@@ -180,25 +199,7 @@ window.$tb["show"] = function () {
                         rows: [
                             ui_objects.property_form,
                             ui_objects.property_datablock,
-                            {
-                                id: "property-item", view: "property", hidden: true,
-                                elements: [
-                                    {type: "label", label: "General"},
-                                    {label: "#", id: "id"},
-                                    {type: "text", label: "name", id: "$$name"},
-                                    {type: "text", label: "label", id: "$$label"},
-                                    {
-                                        type: "combo", label: "type", id: "$$type", options: [
-                                            {id: "text", value: "Text"},
-                                            {id: "numeric", value: "Numeric"},
-                                            {id: "date", value: "Date"},
-                                            {id: "datetime", value: "Date & Time"},
-                                            {id: "time", value: "Time"},
-                                            {id: "checkbox", value: "Checkbox"},
-                                        ],
-                                    },
-                                ],
-                            },
+                            ui_objects.property_item,
                         ],
                     },
                 ],
@@ -226,7 +227,7 @@ window.$tb["show"] = function () {
     const content = $$("content");
     const property_form = $$("ui-property-form");
     const property_datablock = $$("ui-property-datablock");
-    const property_item = $$("property-item");
+    const property_item = $$("ui-property-item");
     const context_menu_form = webix.ui({
         view: "contextmenu", width: 200,
         data: [
