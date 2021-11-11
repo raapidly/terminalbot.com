@@ -7,7 +7,7 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     const validator = {
-        validate_properties: function (properties, validators) {
+        is_valid_properties: function (properties, validators) {
             for (let validator_key in validators) {
                 let validate_property = validators[validator_key];
                 let property_value = properties[validator_key];
@@ -118,15 +118,15 @@ window.$tb["show"] = function () {
                     component.$$name = "";
                 switch (component.$$kind) {
                     case "form":
-                        if (validator.validate_properties(component, validator_property.form))
+                        if (validator.is_valid_properties(component, validator_property.form))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "datablock":
-                        if (validator.validate_properties(component, validator_property.datablock))
+                        if (validator.is_valid_properties(component, validator_property.datablock))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "item":
-                        if (validator.validate_properties(component, validator_property.item))
+                        if (validator.is_valid_properties(component, validator_property.item))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                 }
