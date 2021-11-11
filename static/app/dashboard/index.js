@@ -18,7 +18,7 @@ window.$tb["show"] = function () {
         }
     };
     const basic_validators = {
-        isEmpty: function (value) {
+        is_empty: function (value) {
             if (value === undefined) {
                 return true;
             } else if (/^\s*$/.test(value)) {
@@ -31,7 +31,7 @@ window.$tb["show"] = function () {
         form: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -42,7 +42,7 @@ window.$tb["show"] = function () {
         datablock: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -51,7 +51,7 @@ window.$tb["show"] = function () {
             },
             $$type: function (value) {
                 let allowed_values = ["form"];
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!allowed_values.includes(value)) {
                     return false;
@@ -62,7 +62,7 @@ window.$tb["show"] = function () {
         item: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -71,7 +71,7 @@ window.$tb["show"] = function () {
             },
             $$label: function (value) {
                 let valid_regex = /^.*$/;
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -80,7 +80,7 @@ window.$tb["show"] = function () {
             },
             $$type: function (value) {
                 let allowed_values = ["text", "numeric", "date", "datetime", "time", "checkbox"];
-                if (basic_validators.isEmpty(value)) {
+                if (basic_validators.is_empty(value)) {
                     return false;
                 } else if (!allowed_values.includes(value)) {
                     return false;
