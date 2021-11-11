@@ -209,6 +209,14 @@ window.$tb["show"] = function () {
                 {id: "triggers", value: "Triggers"},
             ],
         },
+        context_item: {
+            id: "ui-context-item", view: "contextmenu", width: 200,
+            data: [
+                {id: "delete", value: "Delete"},
+                {$template: "Separator"},
+                {id: "triggers", value: "Triggers"},
+            ],
+        },
     };
 
     /*==============================================================================================================
@@ -247,6 +255,7 @@ window.$tb["show"] = function () {
     });
     webix.ui(view_objects.context_form);
     webix.ui(view_objects.context_datablock);
+    webix.ui(view_objects.context_item);
 
     /*==============================================================================================================
      ======================================== View Selector
@@ -260,14 +269,7 @@ window.$tb["show"] = function () {
 
     const context_menu_form = $$("ui-context-form");
     const context_menu_datablock = $$("ui-context-datablock");
-    const context_menu_item = webix.ui({
-        view: "contextmenu", width: 200,
-        data: [
-            {id: "delete", value: "Delete"},
-            {$template: "Separator"},
-            {id: "triggers", value: "Triggers"},
-        ],
-    });
+    const context_menu_item = $$("ui-context-item");
 
     /*==============================================================================================================
      ======================================== View Binding
