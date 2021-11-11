@@ -231,7 +231,7 @@ window.$tb["show"] = function () {
             {
                 view: "toolbar",
                 cols: [
-                    {view: "icon", icon: "mdi mdi-home-outline", tooltip: "Home"},
+                    {view: "icon", icon: "mdi mdi-monitor-dashboard", tooltip: "Dashboard"},
                     {view: "icon", icon: "mdi mdi-content-save-all-outline", tooltip: "Save"},
                     {view: "icon", icon: "mdi mdi-notebook-plus-outline", tooltip: "Create"},
                     {view: "icon", icon: "mdi mdi-folder-open-outline", tooltip: "Open"},
