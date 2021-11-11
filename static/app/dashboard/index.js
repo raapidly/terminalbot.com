@@ -228,9 +228,9 @@ window.$tb["show"] = function () {
     const ui_tree = $$("ui-tree");
     const ui_content = $$("ui-content");
 
-    const property_form = $$("ui-property-form");
-    const property_datablock = $$("ui-property-datablock");
-    const property_item = $$("ui-property-item");
+    const ui_property_form = $$("ui-property-form");
+    const ui_property_datablock = $$("ui-property-datablock");
+    const ui_property_item = $$("ui-property-item");
 
     const context_menu_form = webix.ui({
         view: "contextmenu", width: 200,
@@ -284,31 +284,31 @@ window.$tb["show"] = function () {
     });
 
     ui_tree.attachEvent("onBeforeSelect", function () {
-        property_form.editStop();
-        property_datablock.editStop();
-        property_item.editStop();
-        property_form.hide();
-        property_datablock.hide();
-        property_item.hide();
-        property_form.clear();
-        property_datablock.clear();
-        property_item.clear();
+        ui_property_form.editStop();
+        ui_property_datablock.editStop();
+        ui_property_item.editStop();
+        ui_property_form.hide();
+        ui_property_datablock.hide();
+        ui_property_item.hide();
+        ui_property_form.clear();
+        ui_property_datablock.clear();
+        ui_property_item.clear();
     });
 
     ui_tree.attachEvent("onAfterSelect", function (id) {
         let item = ui_tree.getItem(id);
         switch (item.$$kind) {
             case "form":
-                property_form.setValues(item);
-                property_form.show();
+                ui_property_form.setValues(item);
+                ui_property_form.show();
                 break;
             case "datablock":
-                property_datablock.setValues(item);
-                property_datablock.show();
+                ui_property_datablock.setValues(item);
+                ui_property_datablock.show();
                 break;
             case "item":
-                property_item.setValues(item);
-                property_item.show();
+                ui_property_item.setValues(item);
+                ui_property_item.show();
                 break;
         }
         ui_tree.showItem(item.id);
@@ -365,9 +365,9 @@ window.$tb["show"] = function () {
                     ok: "Delete",
                 }).then(function () {
                     ui_tree.remove(item.id);
-                    property_form.hide();
-                    property_datablock.hide();
-                    property_item.hide();
+                    ui_property_form.hide();
+                    ui_property_datablock.hide();
+                    ui_property_item.hide();
                     ui_tree.select(item.$parent);
                 });
                 break;
@@ -388,9 +388,9 @@ window.$tb["show"] = function () {
                     ok: "Delete",
                 }).then(function () {
                     ui_tree.remove(item.id);
-                    property_form.hide();
-                    property_datablock.hide();
-                    property_item.hide();
+                    ui_property_form.hide();
+                    ui_property_datablock.hide();
+                    ui_property_item.hide();
                     ui_tree.select(item.$parent);
                 });
                 break;
@@ -404,18 +404,18 @@ window.$tb["show"] = function () {
      ======================================== Property Event
      =============================================================================================================*/
 
-    property_form.attachEvent("onAfterEditStop", function () {
-        let form_values = property_form.getValues();
+    ui_property_form.attachEvent("onAfterEditStop", function () {
+        let form_values = ui_property_form.getValues();
         ui_tree.updateItem(form_values.id, form_values);
     });
 
-    property_datablock.attachEvent("onAfterEditStop", function () {
-        let form_values = property_datablock.getValues();
+    ui_property_datablock.attachEvent("onAfterEditStop", function () {
+        let form_values = ui_property_datablock.getValues();
         ui_tree.updateItem(form_values.id, form_values);
     });
 
-    property_item.attachEvent("onAfterEditStop", function () {
-        let form_values = property_item.getValues();
+    ui_property_item.attachEvent("onAfterEditStop", function () {
+        let form_values = ui_property_item.getValues();
         ui_tree.updateItem(form_values.id, form_values);
     });
 
