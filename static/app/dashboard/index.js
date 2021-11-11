@@ -333,39 +333,36 @@ window.$tb["show"] = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
-        webix.ui({
-            id: "ui-window", view: "window", position: "center",
-            width: 600, height: 400,
-            head: {
-                view: "toolbar",
-                cols: [
-                    {width: 5},
-                    {view: "label", label: "Source Code"},
-                    {name: "close", view: "icon", icon: "mdi mdi-close", tooltip: "Close"},
-                ],
-            },
-            body: {},
-        });
-
-        let ui_window = $$("ui-window");
-        let ui_window_close = ui_window.queryView({name: "close"});
-
-        ui_window.attachEvent("onShow", function () {
-            ui_master.disable();
-        });
-        ui_window.attachEvent("onHide", function () {
-            ui_master.enable();
-            ui_window.destructor();
-        });
-        ui_window_close.attachEvent("onItemClick", function () {
-            ui_window.hide();
-        });
-
         ui_master.disable();
         ui_master.showProgress();
         webix.require({
             "//cdn.webix.com/components/edge/monaco/monaco.js": true,
         }).then(function () {
+            webix.ui({
+                id: "ui-window", view: "window", position: "center",
+                width: 600, height: 400,
+                head: {
+                    view: "toolbar",
+                    cols: [
+                        {width: 5},
+                        {view: "label", label: "Source Code"},
+                        {name: "close", view: "icon", icon: "mdi mdi-close", tooltip: "Close"},
+                    ],
+                },
+                body: {},
+            });
+            let ui_window = $$("ui-window");
+            let ui_window_close = ui_window.queryView({name: "close"});
+            ui_window.attachEvent("onShow", function () {
+                ui_master.disable();
+            });
+            ui_window.attachEvent("onHide", function () {
+                ui_master.enable();
+                ui_window.destructor();
+            });
+            ui_window_close.attachEvent("onItemClick", function () {
+                ui_window.hide();
+            });
             ui_master.enable();
             ui_master.hideProgress();
             ui_window.show();
