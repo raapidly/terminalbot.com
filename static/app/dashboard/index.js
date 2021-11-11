@@ -165,11 +165,12 @@ window.$tb["show"] = function () {
             id: "ui-property-item", view: "property", hidden: true,
             elements: [
                 {type: "label", label: "General"},
-                {label: "#", id: "id"},
-                {type: "text", label: "name", id: "$$name"},
-                {type: "text", label: "label", id: "$$label"},
+                {id: "id", label: "#"},
+                {id: "$$name", type: "text", label: "name"},
+                {id: "$$label", type: "text", label: "label"},
                 {
-                    type: "combo", label: "type", id: "$$type", options: [
+                    id: "$$type", type: "combo", label: "type",
+                    options: [
                         {id: "text", value: "Text"},
                         {id: "numeric", value: "Numeric"},
                         {id: "date", value: "Date"},
