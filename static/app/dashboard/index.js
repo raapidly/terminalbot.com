@@ -335,16 +335,15 @@ window.$tb["show"] = function () {
         return component.$$kind === "item";
     });
     ui_context_form.attachEvent("onMenuItemClick", function (id) {
-        let item = ui_tree.getSelectedItem();
+        let component = ui_tree.getSelectedItem();
         switch (id) {
             case "insert-datablock":
-                let new_item = {$$kind: "datablock"};
-                let new_item_id = ui_tree.add(new_item, -1, item.id);
-                ui_tree.open(item.id);
-                ui_tree.select(new_item_id);
+                let new_component = {$$kind: "datablock"};
+                let new_component_id = ui_tree.add(new_component, -1, component.id);
+                ui_tree.open(component.id);
+                ui_tree.select(new_component_id);
                 break;
             case "triggers":
-                webix.message(`"${item.value}" triggers`);
                 break;
         }
     });
