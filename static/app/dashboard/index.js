@@ -226,7 +226,7 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     const ui_tree = $$("ui-tree");
-    const content = $$("ui-content");
+    const ui_content = $$("ui-content");
 
     const property_form = $$("ui-property-form");
     const property_datablock = $$("ui-property-datablock");
@@ -424,14 +424,14 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     let item_id = ui_tree.add({$$kind: "form"});
-    content.addView({
+    ui_content.addView({
         minHeight: 500,
         rows: [
             {view: "template", type: "header", template: "Master"},
             {view: "scrollview", scroll: "auto", body: {}},
         ],
     });
-    content.addView({
+    ui_content.addView({
         minHeight: 500,
         rows: [
             {view: "template", type: "header", template: "Detail"},
