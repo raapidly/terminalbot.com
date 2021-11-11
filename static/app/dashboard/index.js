@@ -134,6 +134,32 @@ window.$tb["show"] = function () {
         },
     };
     const view_objects = {
+        toolbar: {
+            id: "ui-toolbar", view: "toolbar", padding: 7.5,
+            cols: [
+                {
+                    name: "dashboard", view: "icon", icon: "mdi mdi-monitor-dashboard",
+                    tooltip: "Dashboard", borderless: false,
+                },
+                {
+                    name: "save", view: "icon", icon: "mdi mdi-content-save-all-outline",
+                    tooltip: "Save", borderless: false,
+                },
+                {
+                    name: "new", view: "icon", icon: "mdi mdi-notebook-plus-outline",
+                    tooltip: "New", borderless: false,
+                },
+                {
+                    name: "open", view: "icon", icon: "mdi mdi-folder-open-outline",
+                    tooltip: "Open", borderless: false,
+                },
+                {},
+                {
+                    name: "source-code", view: "icon", icon: "mdi mdi-application-braces-outline",
+                    tooltip: "Source Code", borderless: false,
+                },
+            ],
+        },
         tree: {
             id: "ui-tree", view: "tree", select: true, minHeight: 175, data: [],
             type: {folder: view_functions.tree.folder},
@@ -228,32 +254,7 @@ window.$tb["show"] = function () {
     webix.ui({
         type: "space",
         rows: [
-            {
-                view: "toolbar", padding: 7.5,
-                cols: [
-                    {
-                        name: "dashboard", view: "icon", icon: "mdi mdi-monitor-dashboard",
-                        tooltip: "Dashboard", borderless: false,
-                    },
-                    {
-                        name: "save", view: "icon", icon: "mdi mdi-content-save-all-outline",
-                        tooltip: "Save", borderless: false,
-                    },
-                    {
-                        name: "new", view: "icon", icon: "mdi mdi-notebook-plus-outline",
-                        tooltip: "New", borderless: false,
-                    },
-                    {
-                        name: "open", view: "icon", icon: "mdi mdi-folder-open-outline",
-                        tooltip: "Open", borderless: false,
-                    },
-                    {},
-                    {
-                        name: "source-code", view: "icon", icon: "mdi mdi-application-braces-outline",
-                        tooltip: "Source Code", borderless: false,
-                    },
-                ],
-            },
+            view_objects.toolbar,
             {
                 type: "wide",
                 cols: [
