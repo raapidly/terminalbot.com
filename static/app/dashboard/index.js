@@ -196,6 +196,19 @@ window.$tb["show"] = function () {
                 {id: "triggers", value: "Triggers"},
             ],
         },
+        context_datablock: {
+            id: "ui-context-datablock", view: "contextmenu", width: 200,
+            data: [
+                {
+                    id: "insert", value: "Insert", data: [
+                        {id: "insert-item", value: "Item"},
+                    ],
+                },
+                {id: "delete", value: "Delete"},
+                {$template: "Separator"},
+                {id: "triggers", value: "Triggers"},
+            ],
+        },
     };
 
     /*==============================================================================================================
@@ -233,6 +246,7 @@ window.$tb["show"] = function () {
         ],
     });
     webix.ui(view_objects.context_form);
+    webix.ui(view_objects.context_datablock);
 
     /*==============================================================================================================
      ======================================== View Selector
@@ -246,19 +260,7 @@ window.$tb["show"] = function () {
     const ui_property_item = $$("ui-property-item");
 
     const context_menu_form = $$("ui-context-form");
-    const context_menu_datablock = webix.ui({
-        view: "contextmenu", width: 200,
-        data: [
-            {
-                id: "insert", value: "Insert", data: [
-                    {id: "insert-item", value: "Item"},
-                ],
-            },
-            {id: "delete", value: "Delete"},
-            {$template: "Separator"},
-            {id: "triggers", value: "Triggers"},
-        ],
-    });
+    const context_menu_datablock = $$("ui-context-datablock");
     const context_menu_item = webix.ui({
         view: "contextmenu", width: 200,
         data: [
