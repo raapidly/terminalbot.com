@@ -229,14 +229,29 @@ window.$tb["show"] = function () {
         type: "space",
         rows: [
             {
-                view: "toolbar",
+                view: "toolbar", padding: 7.5,
                 cols: [
-                    {view: "icon", icon: "mdi mdi-monitor-dashboard", tooltip: "Dashboard"},
-                    {view: "icon", icon: "mdi mdi-content-save-all-outline", tooltip: "Save"},
-                    {view: "icon", icon: "mdi mdi-notebook-plus-outline", tooltip: "New"},
-                    {view: "icon", icon: "mdi mdi-folder-open-outline", tooltip: "Open"},
+                    {
+                        view: "icon", icon: "mdi mdi-monitor-dashboard", tooltip: "Dashboard",
+                        borderless: false
+                    },
+                    {
+                        view: "icon", icon: "mdi mdi-content-save-all-outline", tooltip: "Save",
+                        borderless: false
+                    },
+                    {
+                        view: "icon", icon: "mdi mdi-notebook-plus-outline", tooltip: "New",
+                        borderless: false
+                    },
+                    {
+                        view: "icon", icon: "mdi mdi-folder-open-outline", tooltip: "Open",
+                        borderless: false
+                    },
                     {},
-                    {view: "icon", icon: "mdi mdi-application-braces-outline", tooltip: "Source Code"},
+                    {
+                        view: "icon", icon: "mdi mdi-application-braces-outline", tooltip: "Source Code",
+                        borderless: false
+                    },
                 ],
             },
             {
