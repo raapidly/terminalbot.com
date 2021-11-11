@@ -323,16 +323,16 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     ui_context_form.attachEvent("onBeforeShow", function () {
-        let item = ui_tree.getSelectedItem();
-        return item.$$kind === "form";
+        let component = ui_tree.getSelectedItem();
+        return component.$$kind === "form";
     });
     ui_context_datablock.attachEvent("onBeforeShow", function () {
-        let item = ui_tree.getSelectedItem();
-        return item.$$kind === "datablock";
+        let component = ui_tree.getSelectedItem();
+        return component.$$kind === "datablock";
     });
     ui_context_item.attachEvent("onBeforeShow", function () {
-        let item = ui_tree.getSelectedItem();
-        return item.$$kind === "item";
+        let component = ui_tree.getSelectedItem();
+        return component.$$kind === "item";
     });
     ui_context_form.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
