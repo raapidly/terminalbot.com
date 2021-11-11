@@ -252,7 +252,7 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     webix.ui({
-        type: "space",
+        id: "ui-master", type: "space",
         rows: [
             view_objects.toolbar,
             {
@@ -295,6 +295,7 @@ window.$tb["show"] = function () {
      ======================================== View Selector
      =============================================================================================================*/
 
+    const ui_master = $$("ui-master");
     const ui_toolbar = $$("ui-toolbar");
     const ui_toolbar_dashboard = ui_toolbar.queryView({name: "dashboard"});
     const ui_toolbar_save = ui_toolbar.queryView({name: "save"});
@@ -331,6 +332,7 @@ window.$tb["show"] = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
+        ui_master.disable();
     });
 
     /*==============================================================================================================
