@@ -375,7 +375,7 @@ window.$tb["show"] = function () {
         }
     });
     ui_context_item.attachEvent("onMenuItemClick", function (id) {
-        let item = ui_tree.getSelectedItem();
+        let component = ui_tree.getSelectedItem();
         switch (id) {
             case "delete":
                 webix.confirm({
@@ -384,15 +384,14 @@ window.$tb["show"] = function () {
                     text: "You are about to delete this Item. Are you sure?",
                     ok: "Delete",
                 }).then(function () {
-                    ui_tree.remove(item.id);
+                    ui_tree.remove(component.id);
                     ui_property_form.hide();
                     ui_property_datablock.hide();
                     ui_property_item.hide();
-                    ui_tree.select(item.$parent);
+                    ui_tree.select(component.$parent);
                 });
                 break;
             case "triggers":
-                webix.message(`"${item.value}" triggers`);
                 break;
         }
     });
