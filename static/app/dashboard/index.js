@@ -133,6 +133,13 @@ window.$tb["show"] = function () {
             }
         }
     };
+    const ui_objects = {
+        tree: {
+            id: "ui-tree", view: "tree", select: true, minHeight: 175, data: [],
+            type: {folder: ui_functions.tree.folder},
+            template: ui_functions.tree.template,
+        }
+    };
 
     /*==============================================================================================================
      ======================================== View Factory
@@ -144,11 +151,7 @@ window.$tb["show"] = function () {
             {
                 type: "wide", width: 250, minWidth: 250, maxWidth: 450,
                 rows: [
-                    {
-                        id: "tree", view: "tree", select: true, minHeight: 175, data: [],
-                        type: {folder: ui_functions.tree.folder},
-                        template: ui_functions.tree.template,
-                    },
+                    ui_objects.tree,
                     {view: "resizer"},
                     {
                         minHeight: 175,
@@ -216,7 +219,7 @@ window.$tb["show"] = function () {
      ======================================== View Selector
      =============================================================================================================*/
 
-    const tree = $$("tree");
+    const tree = $$("ui-tree");
     const content = $$("content");
     const property_form = $$("property-form");
     const property_datablock = $$("property-datablock");
