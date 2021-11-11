@@ -6,7 +6,7 @@ window.$tb["show"] = function () {
      ======================================== Validators
      =============================================================================================================*/
 
-    const validators = {
+    const validator = {
         validate_properties: function (properties, validators) {
             for (let validator_key in validators) {
                 let validate_property = validators[validator_key];
@@ -17,7 +17,7 @@ window.$tb["show"] = function () {
             return true;
         },
     };
-    const validators_basic = {
+    const validator_basic = {
         is_empty: function (value) {
             if (value === undefined) {
                 return true;
@@ -27,11 +27,11 @@ window.$tb["show"] = function () {
             return false;
         },
     };
-    const validators_properties = {
+    const validator_property = {
         form: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -42,7 +42,7 @@ window.$tb["show"] = function () {
         datablock: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -51,7 +51,7 @@ window.$tb["show"] = function () {
             },
             $$type: function (value) {
                 let allowed_values = ["form"];
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!allowed_values.includes(value)) {
                     return false;
@@ -62,7 +62,7 @@ window.$tb["show"] = function () {
         item: {
             $$name: function (value) {
                 let valid_regex = /^[a-zA-Z_][a-zA-Z0-9_]*$/;
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -71,7 +71,7 @@ window.$tb["show"] = function () {
             },
             $$label: function (value) {
                 let valid_regex = /^.*$/;
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!valid_regex.test(value)) {
                     return false;
@@ -80,7 +80,7 @@ window.$tb["show"] = function () {
             },
             $$type: function (value) {
                 let allowed_values = ["text", "numeric", "date", "datetime", "time", "checkbox"];
-                if (validators_basic.is_empty(value)) {
+                if (validator_basic.is_empty(value)) {
                     return false;
                 } else if (!allowed_values.includes(value)) {
                     return false;
@@ -118,15 +118,15 @@ window.$tb["show"] = function () {
                     component.$$name = "";
                 switch (component.$$kind) {
                     case "form":
-                        if (validators.validate_properties(component, validators_properties.form))
+                        if (validator.validate_properties(component, validator_property.form))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "datablock":
-                        if (validators.validate_properties(component, validators_properties.datablock))
+                        if (validator.validate_properties(component, validator_property.datablock))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                     case "item":
-                        if (validators.validate_properties(component, validators_properties.item))
+                        if (validator.validate_properties(component, validator_property.item))
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                 }
