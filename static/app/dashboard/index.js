@@ -213,7 +213,8 @@ window.$tb["show"] = function () {
                 type: "wide",
                 rows: [
                     {
-                        view: "scrollview", scroll: "y", body: ui_objects.content,
+                        view: "scrollview", scroll: "y",
+                        body: ui_objects.content,
                     },
                 ],
             },
