@@ -1,0 +1,7 @@
+.webix_icon {
+    line-height: 1.4;
+}
+
+.custom_icon_error .webix_icon {
+    color: red !important;
+}
