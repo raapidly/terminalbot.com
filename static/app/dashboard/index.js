@@ -340,13 +340,14 @@ window.$tb["show"] = function () {
                 cols: [
                     {width: 5},
                     {view: "label", label: "Source Code"},
-                    {},
+                    {name: "close", view: "icon", icon: "mdi mdi-close", tooltip: "Close"},
                 ],
             },
             body: {},
         });
 
         let ui_window = $$("ui-window");
+        let ui_window_close = ui_window.queryView({name: "close"});
 
         ui_window.attachEvent("onShow", function () {
             ui_master.disable();
@@ -354,6 +355,9 @@ window.$tb["show"] = function () {
         ui_window.attachEvent("onHide", function () {
             ui_master.enable();
             ui_window.destructor();
+        });
+        ui_window_close.attachEvent("onItemClick", function () {
+            ui_window.hide();
         });
 
         ui_window.show();
