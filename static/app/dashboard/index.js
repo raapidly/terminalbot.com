@@ -315,6 +315,7 @@ window.$tb["show"] = function () {
      ======================================== View Binding
      =============================================================================================================*/
 
+    webix.extend(ui_master, webix.ProgressBar);
     ui_context_form.attachTo(ui_tree);
     ui_context_datablock.attachTo(ui_tree);
     ui_context_item.attachTo(ui_tree);
@@ -360,7 +361,15 @@ window.$tb["show"] = function () {
             ui_window.hide();
         });
 
-        ui_window.show();
+        ui_master.disable();
+        ui_master.showProgress();
+        webix.require({
+            "//cdn.webix.com/components/edge/monaco/monaco.js": true,
+        }).then(function () {
+            ui_master.enable();
+            ui_master.hideProgress();
+            ui_window.show();
+        });
     });
 
     /*==============================================================================================================
