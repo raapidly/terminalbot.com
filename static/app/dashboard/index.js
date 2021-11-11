@@ -139,6 +139,14 @@ window.$tb["show"] = function () {
             type: {folder: ui_functions.tree.folder},
             template: ui_functions.tree.template,
         },
+        property_form: {
+            id: "ui-property-form", view: "property", hidden: true,
+            elements: [
+                {type: "label", label: "General"},
+                {label: "#", id: "id"},
+                {type: "text", label: "name", id: "$$name"},
+            ],
+        },
     };
 
     /*==============================================================================================================
@@ -156,14 +164,7 @@ window.$tb["show"] = function () {
                     {
                         minHeight: 175,
                         rows: [
-                            {
-                                id: "property-form", view: "property", hidden: true,
-                                elements: [
-                                    {type: "label", label: "General"},
-                                    {label: "#", id: "id"},
-                                    {type: "text", label: "name", id: "$$name"},
-                                ],
-                            },
+                            ui_objects.property_form,
                             {
                                 id: "property-datablock", view: "property", hidden: true,
                                 elements: [
@@ -221,7 +222,7 @@ window.$tb["show"] = function () {
 
     const tree = $$("ui-tree");
     const content = $$("content");
-    const property_form = $$("property-form");
+    const property_form = $$("ui-property-form");
     const property_datablock = $$("property-datablock");
     const property_item = $$("property-item");
     const context_menu_form = webix.ui({
