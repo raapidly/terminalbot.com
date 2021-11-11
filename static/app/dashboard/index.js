@@ -288,7 +288,6 @@ window.$tb["show"] = function () {
         let item = ui_tree.getItem(id);
         ui_tree.select(item.id);
     });
-
     ui_tree.attachEvent("onBeforeSelect", function () {
         ui_property_form.editStop();
         ui_property_datablock.editStop();
@@ -300,7 +299,6 @@ window.$tb["show"] = function () {
         ui_property_datablock.clear();
         ui_property_item.clear();
     });
-
     ui_tree.attachEvent("onAfterSelect", function (id) {
         let item = ui_tree.getItem(id);
         switch (item.$$kind) {
