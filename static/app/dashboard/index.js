@@ -94,7 +94,7 @@ window.$tb["show"] = function () {
      ======================================== View Initialization
      =============================================================================================================*/
 
-    const ui_functions = {
+    const view_functions = {
         tree: {
             folder: function (component) {
                 let icon_class = "webix_icon mdi ";
@@ -133,11 +133,11 @@ window.$tb["show"] = function () {
             },
         },
     };
-    const ui_objects = {
+    const view_objects = {
         tree: {
             id: "ui-tree", view: "tree", select: true, minHeight: 175, data: [],
-            type: {folder: ui_functions.tree.folder},
-            template: ui_functions.tree.template,
+            type: {folder: view_functions.tree.folder},
+            template: view_functions.tree.template,
         },
         content: {
             id: "ui-content", type: "space", rows: [],
@@ -196,14 +196,14 @@ window.$tb["show"] = function () {
             {
                 type: "wide", width: 250, minWidth: 250, maxWidth: 450,
                 rows: [
-                    ui_objects.tree,
+                    view_objects.tree,
                     {view: "resizer"},
                     {
                         minHeight: 175,
                         rows: [
-                            ui_objects.property_form,
-                            ui_objects.property_datablock,
-                            ui_objects.property_item,
+                            view_objects.property_form,
+                            view_objects.property_datablock,
+                            view_objects.property_item,
                         ],
                     },
                 ],
@@ -214,7 +214,7 @@ window.$tb["show"] = function () {
                 rows: [
                     {
                         view: "scrollview", scroll: "y",
-                        body: ui_objects.content,
+                        body: view_objects.content,
                     },
                 ],
             },
