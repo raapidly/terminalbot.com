@@ -285,8 +285,8 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     ui_tree.attachEvent("onBeforeContextMenu", function (id) {
-        let item = ui_tree.getItem(id);
-        ui_tree.select(item.id);
+        let component = ui_tree.getItem(id);
+        ui_tree.select(component.id);
     });
     ui_tree.attachEvent("onBeforeSelect", function () {
         ui_property_form.editStop();
@@ -300,22 +300,22 @@ window.$tb["show"] = function () {
         ui_property_item.clear();
     });
     ui_tree.attachEvent("onAfterSelect", function (id) {
-        let item = ui_tree.getItem(id);
-        switch (item.$$kind) {
+        let component = ui_tree.getItem(id);
+        switch (component.$$kind) {
             case "form":
-                ui_property_form.setValues(item);
+                ui_property_form.setValues(component);
                 ui_property_form.show();
                 break;
             case "datablock":
-                ui_property_datablock.setValues(item);
+                ui_property_datablock.setValues(component);
                 ui_property_datablock.show();
                 break;
             case "item":
-                ui_property_item.setValues(item);
+                ui_property_item.setValues(component);
                 ui_property_item.show();
                 break;
         }
-        ui_tree.showItem(item.id);
+        ui_tree.showItem(component.id);
     });
 
     /*==============================================================================================================
