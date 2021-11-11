@@ -139,6 +139,9 @@ window.$tb["show"] = function () {
             type: {folder: ui_functions.tree.folder},
             template: ui_functions.tree.template,
         },
+        content: {
+            id: "ui-content", type: "space", rows: [],
+        },
         property_form: {
             id: "ui-property-form", view: "property", hidden: true,
             elements: [
@@ -210,10 +213,7 @@ window.$tb["show"] = function () {
                 type: "wide",
                 rows: [
                     {
-                        view: "scrollview", scroll: "y",
-                        body: {
-                            id: "content", type: "space", rows: [],
-                        },
+                        view: "scrollview", scroll: "y", body: ui_objects.content,
                     },
                 ],
             },
@@ -225,7 +225,7 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     const tree = $$("ui-tree");
-    const content = $$("content");
+    const content = $$("ui-content");
     const property_form = $$("ui-property-form");
     const property_datablock = $$("ui-property-datablock");
     const property_item = $$("ui-property-item");
