@@ -333,11 +333,14 @@ window.$tb["show"] = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
+
         ui_master.disable();
         ui_master.showProgress();
+
         webix.require({
             "//cdn.webix.com/components/edge/monaco/monaco.js": true,
         }).then(function () {
+
             webix.ui({
                 id: "ui-window", view: "window", position: "center",
                 width: 600, height: 400,
@@ -349,10 +352,15 @@ window.$tb["show"] = function () {
                         {name: "close", view: "icon", icon: "mdi mdi-close", tooltip: "Close"},
                     ],
                 },
-                body: {},
+                body: {
+                    view: "monaco-editor", language: "json", borderless: true,
+                    value: JSON.stringify(ui_tree.serialize(), null, 2)
+                },
             });
+
             let ui_window = $$("ui-window");
             let ui_window_close = ui_window.queryView({name: "close"});
+
             ui_window.attachEvent("onShow", function () {
                 ui_master.disable();
             });
@@ -363,9 +371,11 @@ window.$tb["show"] = function () {
             ui_window_close.attachEvent("onItemClick", function () {
                 ui_window.hide();
             });
+
             ui_master.enable();
             ui_master.hideProgress();
             ui_window.show();
+
         });
     });
 
