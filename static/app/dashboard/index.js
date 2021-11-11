@@ -15,7 +15,7 @@ window.$tb["show"] = function () {
                     return false;
             }
             return true;
-        }
+        },
     };
     const basic_validators = {
         is_empty: function (value) {
@@ -130,8 +130,8 @@ window.$tb["show"] = function () {
                             return `${icon_common_1} ${icon_common_2} ${component.$$name}`;
                         return `${icon_common_1} ${icon_common_2_error} ${component.$$name}`;
                 }
-            }
-        }
+            },
+        },
     };
     const ui_objects = {
         tree: {
