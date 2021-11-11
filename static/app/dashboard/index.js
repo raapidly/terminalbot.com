@@ -225,7 +225,7 @@ window.$tb["show"] = function () {
      ======================================== View Selector
      =============================================================================================================*/
 
-    const tree = $$("ui-tree");
+    const ui_tree = $$("ui-tree");
     const content = $$("ui-content");
 
     const property_form = $$("ui-property-form");
@@ -270,20 +270,20 @@ window.$tb["show"] = function () {
      ======================================== View Binding
      =============================================================================================================*/
 
-    context_menu_form.attachTo(tree);
-    context_menu_datablock.attachTo(tree);
-    context_menu_item.attachTo(tree);
+    context_menu_form.attachTo(ui_tree);
+    context_menu_datablock.attachTo(ui_tree);
+    context_menu_item.attachTo(ui_tree);
 
     /*==============================================================================================================
      ======================================== Tree Event
      =============================================================================================================*/
 
-    tree.attachEvent("onBeforeContextMenu", function (id) {
-        let item = tree.getItem(id);
-        tree.select(item.id);
+    ui_tree.attachEvent("onBeforeContextMenu", function (id) {
+        let item = ui_tree.getItem(id);
+        ui_tree.select(item.id);
     });
 
-    tree.attachEvent("onBeforeSelect", function () {
+    ui_tree.attachEvent("onBeforeSelect", function () {
         property_form.editStop();
         property_datablock.editStop();
         property_item.editStop();
@@ -295,8 +295,8 @@ window.$tb["show"] = function () {
         property_item.clear();
     });
 
-    tree.attachEvent("onAfterSelect", function (id) {
-        let item = tree.getItem(id);
+    ui_tree.attachEvent("onAfterSelect", function (id) {
+        let item = ui_tree.getItem(id);
         switch (item.$$kind) {
             case "form":
                 property_form.setValues(item);
@@ -311,7 +311,7 @@ window.$tb["show"] = function () {
                 property_item.show();
                 break;
         }
-        tree.showItem(item.id);
+        ui_tree.showItem(item.id);
     });
 
     /*==============================================================================================================
@@ -319,28 +319,28 @@ window.$tb["show"] = function () {
      =============================================================================================================*/
 
     context_menu_form.attachEvent("onBeforeShow", function () {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         return item.$$kind === "form";
     });
 
     context_menu_datablock.attachEvent("onBeforeShow", function () {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         return item.$$kind === "datablock";
     });
 
     context_menu_item.attachEvent("onBeforeShow", function () {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         return item.$$kind === "item";
     });
 
     context_menu_form.attachEvent("onMenuItemClick", function (id) {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         switch (id) {
             case "insert-datablock":
                 let new_item = {$$kind: "datablock"};
-                let new_item_id = tree.add(new_item, -1, item.id);
-                tree.open(item.id);
-                tree.select(new_item_id);
+                let new_item_id = ui_tree.add(new_item, -1, item.id);
+                ui_tree.open(item.id);
+                ui_tree.select(new_item_id);
                 break;
             case "triggers":
                 webix.message(`"${item.value}" triggers`);
@@ -349,13 +349,13 @@ window.$tb["show"] = function () {
     });
 
     context_menu_datablock.attachEvent("onMenuItemClick", function (id) {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         switch (id) {
             case "insert-item":
                 let new_item = {$$kind: "item"};
-                let new_item_id = tree.add(new_item, -1, item.id);
-                tree.open(item.id);
-                tree.select(new_item_id);
+                let new_item_id = ui_tree.add(new_item, -1, item.id);
+                ui_tree.open(item.id);
+                ui_tree.select(new_item_id);
                 break;
             case "delete":
                 webix.confirm({
@@ -364,11 +364,11 @@ window.$tb["show"] = function () {
                     text: "You are about to delete this Data Block. Are you sure?",
                     ok: "Delete",
                 }).then(function () {
-                    tree.remove(item.id);
+                    ui_tree.remove(item.id);
                     property_form.hide();
                     property_datablock.hide();
                     property_item.hide();
-                    tree.select(item.$parent);
+                    ui_tree.select(item.$parent);
                 });
                 break;
             case "triggers":
@@ -378,7 +378,7 @@ window.$tb["show"] = function () {
     });
 
     context_menu_item.attachEvent("onMenuItemClick", function (id) {
-        let item = tree.getSelectedItem();
+        let item = ui_tree.getSelectedItem();
         switch (id) {
             case "delete":
                 webix.confirm({
@@ -387,11 +387,11 @@ window.$tb["show"] = function () {
                     text: "You are about to delete this Item. Are you sure?",
                     ok: "Delete",
                 }).then(function () {
-                    tree.remove(item.id);
+                    ui_tree.remove(item.id);
                     property_form.hide();
                     property_datablock.hide();
                     property_item.hide();
-                    tree.select(item.$parent);
+                    ui_tree.select(item.$parent);
                 });
                 break;
             case "triggers":
@@ -406,24 +406,24 @@ window.$tb["show"] = function () {
 
     property_form.attachEvent("onAfterEditStop", function () {
         let form_values = property_form.getValues();
-        tree.updateItem(form_values.id, form_values);
+        ui_tree.updateItem(form_values.id, form_values);
     });
 
     property_datablock.attachEvent("onAfterEditStop", function () {
         let form_values = property_datablock.getValues();
-        tree.updateItem(form_values.id, form_values);
+        ui_tree.updateItem(form_values.id, form_values);
     });
 
     property_item.attachEvent("onAfterEditStop", function () {
         let form_values = property_item.getValues();
-        tree.updateItem(form_values.id, form_values);
+        ui_tree.updateItem(form_values.id, form_values);
     });
 
     /*==============================================================================================================
      ======================================== View Constructor TODO: hard code
      =============================================================================================================*/
 
-    let item_id = tree.add({$$kind: "form"});
+    let item_id = ui_tree.add({$$kind: "form"});
     content.addView({
         minHeight: 500,
         rows: [
@@ -439,7 +439,7 @@ window.$tb["show"] = function () {
         ],
     });
 
-    tree.open(item_id);
-    tree.select(item_id);
+    ui_tree.open(item_id);
+    ui_tree.select(item_id);
 
 };
