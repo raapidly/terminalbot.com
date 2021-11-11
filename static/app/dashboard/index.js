@@ -100,7 +100,7 @@ window.$tb["show"] = function () {
                 let icon_class = "webix_icon mdi ";
                 switch (component.$$kind) {
                     case "form":
-                        icon_class += "mdi-application-outline";
+                        icon_class += "mdi-notebook-outline";
                         return `<span class="${icon_class}"></span>`;
                     case "datablock":
                         icon_class += "mdi-database-outline";
