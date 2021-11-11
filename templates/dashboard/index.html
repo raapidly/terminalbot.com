@@ -11,7 +11,7 @@
             webix.require({
                 "/static/app/dashboard/index.css": true,
                 "/static/app/dashboard/index.js": true,
-            }, function () {
+            }).then(function () {
                 $tb.show();
             });
         });
