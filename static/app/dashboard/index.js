@@ -254,7 +254,6 @@ window.$tb["show"] = function () {
 
     const ui_tree = $$("ui-tree");
     const ui_content = $$("ui-content");
-
     const ui_property_form = $$("ui-property-form");
     const ui_property_datablock = $$("ui-property-datablock");
     const ui_property_item = $$("ui-property-item");
