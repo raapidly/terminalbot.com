@@ -356,8 +356,8 @@ window.$tb["show"] = function () {
                     ],
                 },
                 body: {
-                    view: "monaco-editor", language: "json", borderless: true,
-                    value: JSON.stringify(ui_tree.serialize(), null, 2)
+                    view: "monaco-editor", language: "json", readOnly: true,
+                    value: JSON.stringify(ui_tree.serialize(), null, 4)
                 },
             });
 
