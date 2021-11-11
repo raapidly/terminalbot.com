@@ -344,6 +344,16 @@ window.$tb["show"] = function () {
             "//cdn.webix.com/components/edge/monaco/monaco.js": true,
         }).then(function () {
 
+            let configurations = ui_tree.serialize();
+            let allowed_properties = [
+                "id", "$$kind",
+                ...Object.keys(validator_property.form),
+                ...Object.keys(validator_property.datablock),
+                ...Object.keys(validator_property.item),
+                ...["data"],
+            ];
+            let source_code = JSON.stringify(configurations, allowed_properties, 2);
+
             webix.ui({
                 id: "ui-window", view: "window", position: "center",
                 width: 600, height: 400,
@@ -357,7 +367,7 @@ window.$tb["show"] = function () {
                 },
                 body: {
                     view: "monaco-editor", language: "json", readOnly: true,
-                    value: JSON.stringify(ui_tree.serialize(), null, 2)
+                    value: source_code,
                 },
             });
 
