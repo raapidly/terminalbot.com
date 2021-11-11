@@ -151,10 +151,11 @@ window.$tb["show"] = function () {
             id: "ui-property-datablock", view: "property", hidden: true,
             elements: [
                 {type: "label", label: "General"},
-                {label: "#", id: "id"},
-                {type: "text", label: "name", id: "$$name"},
+                {id: "id", label: "#"},
+                {id: "$$name", type: "text", label: "name"},
                 {
-                    type: "combo", label: "type", id: "$$type", options: [
+                    id: "$$type", type: "combo", label: "type",
+                    options: [
                         {id: "form", value: "Form"},
                     ],
                 },
