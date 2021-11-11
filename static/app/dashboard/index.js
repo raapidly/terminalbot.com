@@ -143,8 +143,8 @@ window.$tb["show"] = function () {
             id: "ui-property-form", view: "property", hidden: true,
             elements: [
                 {type: "label", label: "General"},
-                {label: "#", id: "id"},
-                {type: "text", label: "name", id: "$$name"},
+                {id: "id", label: "#"},
+                {id: "$$name", type: "text", label: "name"},
             ],
         },
     };
