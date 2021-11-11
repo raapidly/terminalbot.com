@@ -351,6 +351,9 @@ window.$tb["show"] = function () {
         ui_window.attachEvent("onShow", function () {
             ui_master.disable();
         });
+        ui_window.attachEvent("onHide", function () {
+            ui_master.enable();
+        });
 
         ui_window.show();
     });
