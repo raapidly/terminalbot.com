@@ -226,9 +226,11 @@ window.$tb["show"] = function () {
 
     const tree = $$("ui-tree");
     const content = $$("ui-content");
+
     const property_form = $$("ui-property-form");
     const property_datablock = $$("ui-property-datablock");
     const property_item = $$("ui-property-item");
+
     const context_menu_form = webix.ui({
         view: "contextmenu", width: 200,
         data: [
