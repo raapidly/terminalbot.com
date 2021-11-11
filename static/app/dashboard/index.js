@@ -188,7 +188,8 @@ window.$tb["show"] = function () {
             id: "ui-context-form", view: "contextmenu", width: 200,
             data: [
                 {
-                    id: "insert", value: "Insert", data: [
+                    id: "insert", value: "Insert",
+                    data: [
                         {id: "insert-datablock", value: "Data Block"},
                     ],
                 },
@@ -200,7 +201,8 @@ window.$tb["show"] = function () {
             id: "ui-context-datablock", view: "contextmenu", width: 200,
             data: [
                 {
-                    id: "insert", value: "Insert", data: [
+                    id: "insert", value: "Insert",
+                    data: [
                         {id: "insert-item", value: "Item"},
                     ],
                 },
