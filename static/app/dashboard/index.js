@@ -295,6 +295,12 @@ window.$tb["show"] = function () {
      ======================================== View Selector
      =============================================================================================================*/
 
+    const ui_toolbar = $$("ui-toolbar");
+    const ui_toolbar_dashboard = ui_toolbar.queryView({name: "dashboard"});
+    const ui_toolbar_save = ui_toolbar.queryView({name: "save"});
+    const ui_toolbar_new = ui_toolbar.queryView({name: "new"});
+    const ui_toolbar_open = ui_toolbar.queryView({name: "open"});
+    const ui_toolbar_source_code = ui_toolbar.queryView({name: "source-code"});
     const ui_tree = $$("ui-tree");
     const ui_content = $$("ui-content");
     const ui_property_form = $$("ui-property-form");
@@ -311,6 +317,21 @@ window.$tb["show"] = function () {
     ui_context_form.attachTo(ui_tree);
     ui_context_datablock.attachTo(ui_tree);
     ui_context_item.attachTo(ui_tree);
+
+    /*==============================================================================================================
+     ======================================== Toolbar Event
+     =============================================================================================================*/
+
+    ui_toolbar_dashboard.attachEvent("onItemClick", function () {
+    });
+    ui_toolbar_save.attachEvent("onItemClick", function () {
+    });
+    ui_toolbar_new.attachEvent("onItemClick", function () {
+    });
+    ui_toolbar_open.attachEvent("onItemClick", function () {
+    });
+    ui_toolbar_source_code.attachEvent("onItemClick", function () {
+    });
 
     /*==============================================================================================================
      ======================================== Tree Event
