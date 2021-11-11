@@ -326,17 +326,14 @@ window.$tb["show"] = function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "form";
     });
-
     ui_context_datablock.attachEvent("onBeforeShow", function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "datablock";
     });
-
     ui_context_item.attachEvent("onBeforeShow", function () {
         let item = ui_tree.getSelectedItem();
         return item.$$kind === "item";
     });
-
     ui_context_form.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
@@ -351,7 +348,6 @@ window.$tb["show"] = function () {
                 break;
         }
     });
-
     ui_context_datablock.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
@@ -380,7 +376,6 @@ window.$tb["show"] = function () {
                 break;
         }
     });
-
     ui_context_item.attachEvent("onMenuItemClick", function (id) {
         let item = ui_tree.getSelectedItem();
         switch (id) {
