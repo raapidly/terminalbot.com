@@ -381,9 +381,8 @@ let show = function () {
                 ui_window.hide();
             });
             ui_window_editor.attachEvent("onViewShow", function () {
-                ui_window_editor.enable();
-                ui_window_editor.hideProgress();
-                ui_window_close.show();
+                ui_window.enable();
+                ui_window.hideProgress();
             });
 
             ui_window.show();
