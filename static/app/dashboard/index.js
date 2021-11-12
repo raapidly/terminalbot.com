@@ -365,12 +365,12 @@ let show = function () {
                     ],
                 },
                 body: {
-                    view: "tb-code", language: "json",
+                    view: "$tb-code", language: "json",
                     readOnly: true, value: view_utilities.generate_source_code(),
                 },
             });
             const ui_window_close = ui_window.queryView({name: "close"});
-            const ui_window_code = ui_window.queryView({view: "tb-code"});
+            const ui_window_code = ui_window.queryView({view: "$tb-code"});
 
             ui_window.attachEvent("onShow", function () {
                 ui_master.hideProgress();
