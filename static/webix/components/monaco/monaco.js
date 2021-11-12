@@ -26,27 +26,4 @@ webix.protoUI({
         }
     },
 
-    setValue: function (value) {
-        if (!value && value !== 0) {
-            value = "";
-        }
-        this.config.value = value;
-        if (this._editor) {
-            this._editor.setValue(value);
-        }
-    },
-    getValue: function () {
-        if (this._editor) {
-            return this._editor.getValue();
-        } else {
-            this.config.value;
-        }
-    },
-    getEditor: function (wait_editor) {
-        if (wait_editor) {
-            return this._editor_promise;
-        } else {
-            return this._editor;
-        }
-    },
 }, webix.ui.view);
