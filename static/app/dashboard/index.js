@@ -341,7 +341,7 @@ window.$tb["show"] = function () {
         ui_master.showProgress();
 
         webix.require({
-            "//cdn.webix.com/components/edge/monaco/monaco.js": true,
+            "/static/webix/components/monaco/monaco.min.js": true,
         }).then(function () {
 
             let configurations = ui_tree.serialize();
@@ -366,8 +366,9 @@ window.$tb["show"] = function () {
                     ],
                 },
                 body: {
-                    view: "monaco-editor", language: "json", readOnly: true,
-                    value: source_code,
+                    view: "monaco-editor", language: "json",
+                    cdn: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/",
+                    readOnly: true, value: source_code,
                 },
             });
 
