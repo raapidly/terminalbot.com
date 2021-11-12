@@ -370,6 +370,7 @@ let show = function () {
             });
 
             let ui_window = $$("ui-window");
+            let ui_window_editor = ui_window.queryView({view: "monaco-editor"});
             let ui_window_close = ui_window.queryView({name: "close"});
 
             ui_window.attachEvent("onShow", function () {
