@@ -4,7 +4,7 @@ webix.protoUI({
     name: "monaco-editor",
     defaults: {language: "javascript"},
     $init: function () {
-        this._waitEditor = webix.promise.defer();
+        this._wait_editor = webix.promise.defer();
         this.$ready.push(this._render_editor);
     },
     _render_configuration: function () {
@@ -30,7 +30,7 @@ webix.protoUI({
         require(["vs/editor/editor.main"], webix.bind(function () {
             let config = webix.copy(this.config);
             this._editor = monaco.editor.create(this.$view, config);
-            this._waitEditor.resolve(this._editor);
+            this._wait_editor.resolve(this._editor);
         }, this));
     },
     setValue: function (value) {
@@ -49,9 +49,9 @@ webix.protoUI({
             this.config.value;
         }
     },
-    getEditor: function (waitEditor) {
-        if (waitEditor) {
-            return this._waitEditor;
+    getEditor: function (_wait_editor) {
+        if (_wait_editor) {
+            return this._wait_editor;
         } else {
             return this._editor;
         }
