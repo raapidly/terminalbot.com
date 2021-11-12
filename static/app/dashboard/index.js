@@ -350,7 +350,7 @@ window.$tb["show"] = function () {
                 ...Object.keys(validator_property.form),
                 ...Object.keys(validator_property.datablock),
                 ...Object.keys(validator_property.item),
-                ...["data"],
+                "data",
             ];
             let source_code = JSON.stringify(configurations, allowed_properties, 2);
 
