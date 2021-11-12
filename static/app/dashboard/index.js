@@ -313,6 +313,7 @@ let show = function () {
      ======================================== View Binding
      =============================================================================================================*/
 
+    webix.extend(ui_master, webix.ProgressBar);
     ui_context_form.attachTo(ui_tree);
     ui_context_datablock.attachTo(ui_tree);
     ui_context_item.attachTo(ui_tree);
@@ -330,6 +331,9 @@ let show = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
+
+        ui_master.disable();
+        ui_master.showProgress();
 
         webix.require({
             "/static/webix/components/monaco/monaco.js": true,
@@ -366,26 +370,17 @@ let show = function () {
             let ui_window_editor = ui_window.queryView({view: "monaco-editor"});
             let ui_window_close = ui_window.queryView({name: "close"});
 
-            webix.extend(ui_window, webix.ProgressBar);
-
-            ui_window.attachEvent("onShow", function () {
-                ui_master.disable();
-                ui_window.disable();
-                ui_window.showProgress();
-            });
             ui_window.attachEvent("onHide", function () {
                 ui_master.enable();
+                ui_master.hideProgress();
                 ui_window.destructor();
             });
             ui_window_close.attachEvent("onItemClick", function () {
                 ui_window.hide();
             });
-            ui_window_editor.attachEvent("onViewShow", function () {
-                ui_window.enable();
-                ui_window.hideProgress();
+            ui_window_editor.attachEvent("onAfterLoad", function () {
+                ui_window.show();
             });
-
-            ui_window.show();
 
         });
 
