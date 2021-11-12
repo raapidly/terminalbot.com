@@ -6,7 +6,7 @@ webix.protoUI({
 
     $init: function (config) {
         config.cdn = "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min";
-        this._editor_promise = webix.promise.defer();
+        let editor_promise = webix.promise.defer();
         this.$ready.push(function () {
             webix.require([
                 this.config.cdn + "/vs/loader.js",
@@ -14,7 +14,7 @@ webix.protoUI({
                 require.config({paths: {vs: this.config.cdn + "/vs"}});
                 require(["vs/editor/editor.main"], webix.bind(function () {
                     this._editor = monaco.editor.create(this.$view, webix.copy(this.config));
-                    this._editor_promise.resolve(this._editor);
+                    editor_promise.resolve(this._editor);
                 }, this));
             }, this));
         });
