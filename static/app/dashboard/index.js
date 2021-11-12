@@ -1,4 +1,4 @@
-let show_ui = function () {
+let show = function () {
 
     /*==============================================================================================================
      ======================================== Validator Initialization
@@ -550,5 +550,5 @@ let show_ui = function () {
 };
 
 window.$tb = {
-    show: show_ui,
+    show: show,
 };
