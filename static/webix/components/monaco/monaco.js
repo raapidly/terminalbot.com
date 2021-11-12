@@ -1,7 +1,9 @@
 // noinspection JSUnresolvedVariable,JSUnusedGlobalSymbols,JSUnresolvedFunction
 
 webix.protoUI({
+
     name: "monaco-editor",
+
     $init: function () {
         this._editor_promise = webix.promise.defer();
         this.$ready.push(this._render_editor);
@@ -11,6 +13,12 @@ webix.protoUI({
         if (base_view.prototype.$setSize.call(this, width, height) && this._editor) {
             this._editor.layout();
         }
+    },
+
+    _render_editor: function () {
+        webix.require(this.config.cdn + "/vs/loader.js").then(
+            webix.bind(this._render_configuration, this)
+        );
     },
     _render_configuration: function () {
         window.MonacoEnvironment = {
@@ -24,11 +32,6 @@ webix.protoUI({
         };
         require.config({paths: {vs: this.config.cdn + "/vs/"}});
         this._render_when_ready();
-    },
-    _render_editor: function () {
-        webix.require(this.config.cdn + "/vs/loader.js").then(
-            webix.bind(this._render_configuration, this)
-        );
     },
     _render_when_ready: function () {
         require(["vs/editor/editor.main"], webix.bind(function () {
