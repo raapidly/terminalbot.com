@@ -313,7 +313,6 @@ let show = function () {
      ======================================== View Binding
      =============================================================================================================*/
 
-    webix.extend(ui_master, webix.ProgressBar);
     ui_context_form.attachTo(ui_tree);
     ui_context_datablock.attachTo(ui_tree);
     ui_context_item.attachTo(ui_tree);
@@ -331,11 +330,6 @@ let show = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
-
-        // TODO: resources, bad user experience
-
-        ui_master.disable();
-        ui_master.showProgress();
 
         webix.require({
             "/static/webix/components/monaco/monaco.js": true,
@@ -374,6 +368,7 @@ let show = function () {
 
             ui_window.attachEvent("onShow", function () {
                 ui_master.disable();
+                ui_window_editor.disable();
             });
             ui_window.attachEvent("onHide", function () {
                 ui_master.enable();

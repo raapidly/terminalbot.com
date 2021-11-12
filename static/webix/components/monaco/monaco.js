@@ -34,6 +34,6 @@ webix.protoUI({
 
     attachEvent: function (name, callback) {
         this.$on[name] = callback;
-    }
+    },
 
 }, webix.ui.view);
