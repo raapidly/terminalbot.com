@@ -506,16 +506,16 @@ let show = function () {
      =============================================================================================================*/
 
     ui_property_form.attachEvent("onAfterEditStop", function () {
-        let form_values = ui_property_form.getValues();
-        ui_tree.updateItem(form_values.id, form_values);
+        let values = ui_property_form.getValues();
+        ui_tree.updateItem(values.id, values);
     });
     ui_property_datablock.attachEvent("onAfterEditStop", function () {
-        let form_values = ui_property_datablock.getValues();
-        ui_tree.updateItem(form_values.id, form_values);
+        let values = ui_property_datablock.getValues();
+        ui_tree.updateItem(values.id, values);
     });
     ui_property_item.attachEvent("onAfterEditStop", function () {
-        let form_values = ui_property_item.getValues();
-        ui_tree.updateItem(form_values.id, form_values);
+        let values = ui_property_item.getValues();
+        ui_tree.updateItem(values.id, values);
     });
 
     /*==============================================================================================================
