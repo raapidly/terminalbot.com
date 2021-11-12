@@ -21,15 +21,6 @@ webix.protoUI({
             this.config.cdn + "/vs/loader.js",
         ]).then(webix.bind(function () {
             require.config({paths: {vs: this.config.cdn + "/vs"}});
-            window.MonacoEnvironment = {
-                getWorkerUrl: () => {
-                    let worker_type = "data:text/javascript;charset=utf-8,";
-                    let worker_content =
-                        "self.MonacoEnvironment = {baseUrl: '" + this.config.cdn + "'};" +
-                        "importScripts('" + this.config.cdn + "/vs/base/worker/workerMain.js');";
-                    return worker_type + encodeURIComponent(worker_content);
-                },
-            };
             this._render_when_ready();
         }, this));
     },
