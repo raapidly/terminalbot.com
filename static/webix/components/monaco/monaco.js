@@ -4,7 +4,8 @@ webix.protoUI({
 
     name: "monaco-editor",
 
-    $init: function () {
+    $init: function (config) {
+        config.cdn = "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min";
         this._editor_promise = webix.promise.defer();
         this.$ready.push(this._render_editor);
     },
