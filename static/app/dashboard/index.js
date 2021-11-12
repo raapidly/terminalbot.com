@@ -295,19 +295,19 @@ let show = function () {
 
     const ui_master = $$("ui-master");
     const ui_toolbar = $$("ui-toolbar");
+    const ui_tree = $$("ui-tree");
+    const ui_content = $$("ui-content");
     const ui_toolbar_dashboard = ui_toolbar.queryView({name: "dashboard"});
     const ui_toolbar_save = ui_toolbar.queryView({name: "save"});
     const ui_toolbar_new = ui_toolbar.queryView({name: "new"});
     const ui_toolbar_open = ui_toolbar.queryView({name: "open"});
     const ui_toolbar_source_code = ui_toolbar.queryView({name: "source-code"});
-    const ui_tree = $$("ui-tree");
-    const ui_content = $$("ui-content");
-    const ui_property_form = $$("ui-property-form");
-    const ui_property_datablock = $$("ui-property-datablock");
-    const ui_property_item = $$("ui-property-item");
     const ui_context_form = $$("ui-context-form");
     const ui_context_datablock = $$("ui-context-datablock");
     const ui_context_item = $$("ui-context-item");
+    const ui_property_form = $$("ui-property-form");
+    const ui_property_datablock = $$("ui-property-datablock");
+    const ui_property_item = $$("ui-property-item");
 
     /*==============================================================================================================
      ======================================== View Binding
