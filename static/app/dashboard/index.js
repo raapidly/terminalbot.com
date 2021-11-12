@@ -247,7 +247,7 @@ let show = function () {
     const view_utilities = {
         generate_source_code: function () {
             let space = 2;
-            let value = ui_tree.serialize();
+            let [value] = ui_tree.serialize();
             let replacer = [
                 "id", "$$kind",
                 ...Object.keys(validator_property.form),
