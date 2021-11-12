@@ -54,5 +54,5 @@ webix.protoUI({
         } else {
             return this._editor;
         }
-    }
+    },
 }, webix.ui.view);
