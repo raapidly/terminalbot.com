@@ -310,6 +310,25 @@ let show = function () {
     const ui_content = $$("ui-content");
 
     /*==============================================================================================================
+     ======================================== View Utilities
+     =============================================================================================================*/
+
+    const view_utilities = {
+        generate_source_code: function () {
+            let space = 2;
+            let value = ui_tree.serialize();
+            let replacer = [
+                "id", "$$kind",
+                ...Object.keys(validator_property.form),
+                ...Object.keys(validator_property.datablock),
+                ...Object.keys(validator_property.item),
+                "data",
+            ];
+            return JSON.stringify(value, replacer, space);
+        },
+    };
+
+    /*==============================================================================================================
      ======================================== View Binding
      =============================================================================================================*/
 
@@ -339,16 +358,6 @@ let show = function () {
             "/static/webix/components/monaco/monaco.js": true,
         }).then(function () {
 
-            let configurations = ui_tree.serialize();
-            let allowed_properties = [
-                "id", "$$kind",
-                ...Object.keys(validator_property.form),
-                ...Object.keys(validator_property.datablock),
-                ...Object.keys(validator_property.item),
-                "data",
-            ];
-            let source_code = JSON.stringify(configurations, allowed_properties, 2);
-
             webix.ui({
                 id: "ui-window", view: "window", position: "center",
                 move: true, resize: true, minWidth: 600, minHeight: 400,
@@ -362,7 +371,7 @@ let show = function () {
                 },
                 body: {
                     view: "monaco-editor", language: "json",
-                    readOnly: true, value: source_code,
+                    readOnly: true, value: view_utilities.generate_source_code(),
                 },
             });
 
