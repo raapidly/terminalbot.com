@@ -341,7 +341,7 @@ window.$tb["show"] = function () {
         ui_master.showProgress();
 
         webix.require({
-            "/static/webix/components/monaco/monaco.min.js": true,
+            "https://cdn.webix.com/components/edge/monaco/monaco.js": true,
         }).then(function () {
 
             let configurations = ui_tree.serialize();
