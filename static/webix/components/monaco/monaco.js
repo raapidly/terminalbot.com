@@ -13,8 +13,7 @@ webix.protoUI({
             ]).then(webix.bind(function () {
                 require.config({paths: {vs: this.config.cdn + "/vs"}});
                 require(["vs/editor/editor.main"], webix.bind(function () {
-                    let config = webix.copy(this.config);
-                    this._editor = monaco.editor.create(this.$view, config);
+                    this._editor = monaco.editor.create(this.$view, webix.copy(this.config));
                     this._editor_promise.resolve(this._editor);
                 }, this));
             }, this));
