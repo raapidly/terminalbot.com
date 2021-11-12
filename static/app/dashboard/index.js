@@ -369,6 +369,7 @@ let show = function () {
             ui_window.attachEvent("onShow", function () {
                 ui_master.disable();
                 ui_window_editor.disable();
+                ui_window_close.hide();
             });
             ui_window.attachEvent("onHide", function () {
                 ui_master.enable();
@@ -377,9 +378,10 @@ let show = function () {
             ui_window_close.attachEvent("onItemClick", function () {
                 ui_window.hide();
             });
+            ui_window_editor.attachEvent("onViewShow", function () {
+                ui_window_editor.enable();
+            });
 
-            ui_master.enable();
-            ui_master.hideProgress();
             ui_window.show();
 
         });
