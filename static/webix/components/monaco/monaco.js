@@ -1,3 +1,5 @@
+// noinspection JSUnresolvedVariable,JSUnusedGlobalSymbols,JSUnresolvedFunction
+
 webix.protoUI({
     name: "monaco-editor",
     defaults: {language: "javascript"},
@@ -6,7 +8,6 @@ webix.protoUI({
         this.$ready.push(this._render_editor);
     },
     _render_configuration: function () {
-        require.config({paths: {vs: this.config.cdn + "/vs/"}});
         window.MonacoEnvironment = {
             getWorkerUrl: () => {
                 return "data:text/javascript;charset=utf-8," +
@@ -16,6 +17,7 @@ webix.protoUI({
                     );
             },
         };
+        require.config({paths: {vs: this.config.cdn + "/vs/"}});
         this._render_when_ready();
     },
     _render_editor: function () {
