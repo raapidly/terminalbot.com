@@ -549,6 +549,4 @@ let show = function () {
 
 };
 
-window.$tb = {
-    show: show,
-};
+window.$tb = {show: show};
