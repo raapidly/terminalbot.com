@@ -1,6 +1,4 @@
-window.$tb = {};
-
-window.$tb["show"] = function () {
+let show = function () {
 
     /*==============================================================================================================
      ======================================== Validator Initialization
@@ -549,4 +547,8 @@ window.$tb["show"] = function () {
         ],
     });
 
+};
+
+window.$tb = {
+    show: show,
 };
