@@ -163,8 +163,40 @@ let show = function () {
             type: {folder: view_functions.tree.folder},
             template: view_functions.tree.template,
         },
-        content: {
-            id: "ui-content", type: "space", rows: [],
+        context_form: {
+            id: "ui-context-form", view: "contextmenu", width: 200,
+            data: [
+                {
+                    id: "insert", value: "Insert",
+                    data: [
+                        {id: "insert-datablock", value: "Data Block"},
+                    ],
+                },
+                {$template: "Separator"},
+                {id: "triggers", value: "Triggers"},
+            ],
+        },
+        context_datablock: {
+            id: "ui-context-datablock", view: "contextmenu", width: 200,
+            data: [
+                {
+                    id: "insert", value: "Insert",
+                    data: [
+                        {id: "insert-item", value: "Item"},
+                    ],
+                },
+                {id: "delete", value: "Delete"},
+                {$template: "Separator"},
+                {id: "triggers", value: "Triggers"},
+            ],
+        },
+        context_item: {
+            id: "ui-context-item", view: "contextmenu", width: 200,
+            data: [
+                {id: "delete", value: "Delete"},
+                {$template: "Separator"},
+                {id: "triggers", value: "Triggers"},
+            ],
         },
         property_form: {
             id: "ui-property-form", view: "property", hidden: true,
@@ -208,40 +240,8 @@ let show = function () {
                 },
             ],
         },
-        context_form: {
-            id: "ui-context-form", view: "contextmenu", width: 200,
-            data: [
-                {
-                    id: "insert", value: "Insert",
-                    data: [
-                        {id: "insert-datablock", value: "Data Block"},
-                    ],
-                },
-                {$template: "Separator"},
-                {id: "triggers", value: "Triggers"},
-            ],
-        },
-        context_datablock: {
-            id: "ui-context-datablock", view: "contextmenu", width: 200,
-            data: [
-                {
-                    id: "insert", value: "Insert",
-                    data: [
-                        {id: "insert-item", value: "Item"},
-                    ],
-                },
-                {id: "delete", value: "Delete"},
-                {$template: "Separator"},
-                {id: "triggers", value: "Triggers"},
-            ],
-        },
-        context_item: {
-            id: "ui-context-item", view: "contextmenu", width: 200,
-            data: [
-                {id: "delete", value: "Delete"},
-                {$template: "Separator"},
-                {id: "triggers", value: "Triggers"},
-            ],
+        content: {
+            id: "ui-content", type: "space", rows: [],
         },
     };
 
