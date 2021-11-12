@@ -2,10 +2,15 @@
 
 webix.protoUI({
     name: "monaco-editor",
-    defaults: {language: "javascript"},
     $init: function () {
         this._wait_editor = webix.promise.defer();
         this.$ready.push(this._render_editor);
+    },
+    $setSize: function (width, height) {
+        let view = webix.ui.view;
+        if (view.prototype.$setSize.call(this, width, height) && this._editor) {
+            this._editor.layout();
+        }
     },
     _render_configuration: function () {
         window.MonacoEnvironment = {
