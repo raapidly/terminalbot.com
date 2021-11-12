@@ -21,14 +21,11 @@ webix.protoUI({
             this.config.cdn + "/vs/loader.js",
         ]).then(webix.bind(function () {
             require.config({paths: {vs: this.config.cdn + "/vs"}});
-            this._render_when_ready();
-        }, this));
-    },
-    _render_when_ready: function () {
-        require(["vs/editor/editor.main"], webix.bind(function () {
-            let config = webix.copy(this.config);
-            this._editor = monaco.editor.create(this.$view, config);
-            this._editor_promise.resolve(this._editor);
+            require(["vs/editor/editor.main"], webix.bind(function () {
+                let config = webix.copy(this.config);
+                this._editor = monaco.editor.create(this.$view, config);
+                this._editor_promise.resolve(this._editor);
+            }, this));
         }, this));
     },
     setValue: function (value) {
