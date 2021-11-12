@@ -3,7 +3,7 @@
 webix.protoUI({
     name: "monaco-editor",
     $init: function () {
-        this.editor_promise = webix.promise.defer();
+        this._editor_promise = webix.promise.defer();
         this.$ready.push(this._render_editor);
     },
     $setSize: function (width, height) {
@@ -34,7 +34,7 @@ webix.protoUI({
         require(["vs/editor/editor.main"], webix.bind(function () {
             let config = webix.copy(this.config);
             this._editor = monaco.editor.create(this.$view, config);
-            this.editor_promise.resolve(this._editor);
+            this._editor_promise.resolve(this._editor);
         }, this));
     },
     setValue: function (value) {
@@ -55,7 +55,7 @@ webix.protoUI({
     },
     getEditor: function (wait_editor) {
         if (wait_editor) {
-            return this.editor_promise;
+            return this._editor_promise;
         } else {
             return this._editor;
         }
