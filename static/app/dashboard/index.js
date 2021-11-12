@@ -366,9 +366,12 @@ let show = function () {
             let ui_window_editor = ui_window.queryView({view: "monaco-editor"});
             let ui_window_close = ui_window.queryView({name: "close"});
 
+            webix.extend(ui_window_editor, webix.ProgressBar);
+
             ui_window.attachEvent("onShow", function () {
                 ui_master.disable();
                 ui_window_editor.disable();
+                ui_window_editor.showProgress();
                 ui_window_close.hide();
             });
             ui_window.attachEvent("onHide", function () {
