@@ -338,7 +338,7 @@ let show = function () {
         ui_master.showProgress();
 
         webix.require({
-            "https://cdn.webix.com/components/edge/monaco/monaco.js": true,
+            "/static/webix/components/monaco/monaco.js": true,
         }).then(function () {
 
             let configurations = ui_tree.serialize();
