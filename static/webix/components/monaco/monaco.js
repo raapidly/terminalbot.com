@@ -13,16 +13,16 @@ webix.protoUI({
             ]).then(webix.bind(function () {
                 require.config({paths: {vs: this.config.cdn + "/vs"}});
                 require(["vs/editor/editor.main"], webix.bind(function () {
-                    this._editor = monaco.editor.create(this.$view, webix.copy(this.config));
-                    editor_promise.resolve(this._editor);
+                    this.$editor = monaco.editor.create(this.$view, webix.copy(this.config));
+                    editor_promise.resolve(this.$editor);
                 }, this));
             }, this));
         });
     },
     $setSize: function (width, height) {
         let base_view = webix.ui.view;
-        if (base_view.prototype.$setSize.call(this, width, height) && this._editor) {
-            this._editor.layout();
+        if (base_view.prototype.$setSize.call(this, width, height) && this.$editor) {
+            this.$editor.layout();
         }
     },
 
