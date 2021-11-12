@@ -364,7 +364,7 @@ let show = function () {
                 },
                 body: {
                     view: "monaco-editor", language: "json",
-                    cdn: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min/",
+                    cdn: "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min",
                     readOnly: true, value: source_code,
                 },
             });
