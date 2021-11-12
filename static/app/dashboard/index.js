@@ -244,6 +244,20 @@ let show = function () {
             id: "ui-content", type: "space", rows: [],
         },
     };
+    const view_utilities = {
+        generate_source_code: function () {
+            let space = 2;
+            let value = ui_tree.serialize();
+            let replacer = [
+                "id", "$$kind",
+                ...Object.keys(validator_property.form),
+                ...Object.keys(validator_property.datablock),
+                ...Object.keys(validator_property.item),
+                "data",
+            ];
+            return JSON.stringify(value, replacer, space);
+        },
+    };
 
     /*==============================================================================================================
      ======================================== View Factory
@@ -308,25 +322,6 @@ let show = function () {
     const ui_property_datablock = $$("ui-property-datablock");
     const ui_property_item = $$("ui-property-item");
     const ui_content = $$("ui-content");
-
-    /*==============================================================================================================
-     ======================================== View Utilities
-     =============================================================================================================*/
-
-    const view_utilities = {
-        generate_source_code: function () {
-            let space = 2;
-            let value = ui_tree.serialize();
-            let replacer = [
-                "id", "$$kind",
-                ...Object.keys(validator_property.form),
-                ...Object.keys(validator_property.datablock),
-                ...Object.keys(validator_property.item),
-                "data",
-            ];
-            return JSON.stringify(value, replacer, space);
-        },
-    };
 
     /*==============================================================================================================
      ======================================== View Binding
