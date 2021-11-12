@@ -353,7 +353,7 @@ let show = function () {
 
             webix.ui({
                 id: "ui-window", view: "window", position: "center",
-                width: 600, height: 400,
+                move: true, resize: true, minWidth: 600, minHeight: 400,
                 head: {
                     view: "toolbar",
                     cols: [

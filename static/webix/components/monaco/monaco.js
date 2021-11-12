@@ -7,8 +7,8 @@ webix.protoUI({
         this.$ready.push(this._render_editor);
     },
     $setSize: function (width, height) {
-        let view = webix.ui.view;
-        if (view.prototype.$setSize.call(this, width, height) && this._editor) {
+        let base_view = webix.ui.view;
+        if (base_view.prototype.$setSize.call(this, width, height) && this._editor) {
             this._editor.layout();
         }
     },
