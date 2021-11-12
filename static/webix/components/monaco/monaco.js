@@ -7,7 +7,18 @@ webix.protoUI({
     $init: function (config) {
         config.cdn = "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min";
         this._editor_promise = webix.promise.defer();
-        this.$ready.push(this._render_editor);
+        this.$ready.push(function () {
+            webix.require([
+                this.config.cdn + "/vs/loader.js",
+            ]).then(webix.bind(function () {
+                require.config({paths: {vs: this.config.cdn + "/vs"}});
+                require(["vs/editor/editor.main"], webix.bind(function () {
+                    let config = webix.copy(this.config);
+                    this._editor = monaco.editor.create(this.$view, config);
+                    this._editor_promise.resolve(this._editor);
+                }, this));
+            }, this));
+        });
     },
     $setSize: function (width, height) {
         let base_view = webix.ui.view;
@@ -16,18 +27,6 @@ webix.protoUI({
         }
     },
 
-    _render_editor: function () {
-        webix.require([
-            this.config.cdn + "/vs/loader.js",
-        ]).then(webix.bind(function () {
-            require.config({paths: {vs: this.config.cdn + "/vs"}});
-            require(["vs/editor/editor.main"], webix.bind(function () {
-                let config = webix.copy(this.config);
-                this._editor = monaco.editor.create(this.$view, config);
-                this._editor_promise.resolve(this._editor);
-            }, this));
-        }, this));
-    },
     setValue: function (value) {
         if (!value && value !== 0) {
             value = "";
