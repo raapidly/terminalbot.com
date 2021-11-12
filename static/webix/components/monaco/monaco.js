@@ -10,11 +10,11 @@ webix.protoUI({
     _render_configuration: function () {
         window.MonacoEnvironment = {
             getWorkerUrl: () => {
-                return "data:text/javascript;charset=utf-8," +
-                    encodeURIComponent(
-                        "self.MonacoEnvironment = {baseUrl: '" + this.config.cdn + "'};" +
-                        "importScripts('" + this.config.cdn + "/vs/base/worker/workerMain.js');"
-                    );
+                let worker_type = "data:text/javascript;charset=utf-8,";
+                let worker_content =
+                    "self.MonacoEnvironment = {baseUrl: '" + this.config.cdn + "'};" +
+                    "importScripts('" + this.config.cdn + "/vs/base/worker/workerMain.js');";
+                return worker_type + encodeURIComponent(worker_content);
             },
         };
         require.config({paths: {vs: this.config.cdn + "/vs/"}});
