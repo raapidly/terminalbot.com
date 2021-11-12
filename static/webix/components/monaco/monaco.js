@@ -5,22 +5,23 @@ webix.protoUI({
         this._waitEditor = webix.promise.defer();
         this.$ready.push(this._render_editor);
     },
+    _render_configuration: function () {
+        require.config({paths: {vs: this.config.cdn + "/vs/"}});
+        window.MonacoEnvironment = {
+            getWorkerUrl: () => {
+                return "data:text/javascript;charset=utf-8," +
+                    encodeURIComponent(
+                        "self.MonacoEnvironment = {baseUrl: '" + this.config.cdn + "'};" +
+                        "importScripts('" + this.config.cdn + "/vs/base/worker/workerMain.js');"
+                    );
+            },
+        };
+        this._render_when_ready();
+    },
     _render_editor: function () {
         let cdn = this.config.cdn;
         webix.require(cdn + "/vs/loader.js").then(
-            webix.bind(function () {
-                require.config({paths: {vs: cdn + "/vs/"}});
-                window.MonacoEnvironment = {
-                    getWorkerUrl: function () {
-                        return "data:text/javascript;charset=utf-8," +
-                            encodeURIComponent(
-                                "self.MonacoEnvironment = { baseUrl: '" + cdn + "' };" +
-                                "importScripts('" + cdn + "/vs/base/worker/workerMain.js');"
-                            );
-                    },
-                };
-                this._render_when_ready();
-            }, this)
+            webix.bind(this._render_configuration, this)
         );
     },
     _render_when_ready: function () {
