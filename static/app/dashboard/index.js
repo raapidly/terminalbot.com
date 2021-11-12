@@ -366,13 +366,12 @@ let show = function () {
             let ui_window_editor = ui_window.queryView({view: "monaco-editor"});
             let ui_window_close = ui_window.queryView({name: "close"});
 
-            webix.extend(ui_window_editor, webix.ProgressBar);
+            webix.extend(ui_window, webix.ProgressBar);
 
             ui_window.attachEvent("onShow", function () {
                 ui_master.disable();
-                ui_window_editor.disable();
-                ui_window_editor.showProgress();
-                ui_window_close.hide();
+                ui_window.disable();
+                ui_window.showProgress();
             });
             ui_window.attachEvent("onHide", function () {
                 ui_master.enable();
@@ -383,6 +382,8 @@ let show = function () {
             });
             ui_window_editor.attachEvent("onViewShow", function () {
                 ui_window_editor.enable();
+                ui_window_editor.hideProgress();
+                ui_window_close.show();
             });
 
             ui_window.show();
