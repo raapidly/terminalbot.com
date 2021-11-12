@@ -334,8 +334,7 @@ window.$tb["show"] = function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
 
-        // TODO: resources
-        // TODO: bad user experience
+        // TODO: resources, bad user experience
 
         ui_master.disable();
         ui_master.showProgress();
