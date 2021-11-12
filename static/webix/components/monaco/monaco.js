@@ -26,12 +26,10 @@ webix.protoUI({
         );
     },
     _render_when_ready: function () {
-        this.disable();
         require(["vs/editor/editor.main"], webix.bind(function () {
             let config = webix.copy(this.config);
             this._editor = monaco.editor.create(this.$view, config);
             this._wait_editor.resolve(this._editor);
-            this.enable();
         }, this));
     },
     setValue: function (value) {
