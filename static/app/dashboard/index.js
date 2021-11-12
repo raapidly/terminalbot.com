@@ -350,16 +350,13 @@ let show = function () {
     ui_toolbar_open.attachEvent("onItemClick", function () {
     });
     ui_toolbar_source_code.attachEvent("onItemClick", function () {
-
         ui_master.disable();
         ui_master.showProgress();
-
         webix.require({
             "/static/webix/components/monaco/monaco.js": true,
         }).then(function () {
-
-            webix.ui({
-                id: "ui-window", view: "window", position: "center",
+            let ui_window = webix.ui({
+                view: "window", position: "center",
                 move: true, resize: true, minWidth: 600, minHeight: 400,
                 head: {
                     view: "toolbar",
@@ -374,25 +371,18 @@ let show = function () {
                     readOnly: true, value: view_utilities.generate_source_code(),
                 },
             });
-
-            let ui_window = $$("ui-window");
-            let ui_window_editor = ui_window.queryView({view: "monaco-editor"});
-            let ui_window_close = ui_window.queryView({name: "close"});
-
             ui_window.attachEvent("onHide", function () {
                 ui_master.enable();
                 ui_master.hideProgress();
                 ui_window.destructor();
             });
-            ui_window_close.attachEvent("onItemClick", function () {
+            ui_window.queryView({name: "close"}).attachEvent("onItemClick", function () {
                 ui_window.hide();
             });
-            ui_window_editor.attachEvent("onAfterLoad", function () {
+            ui_window.queryView({view: "monaco-editor"}).attachEvent("onAfterLoad", function () {
                 ui_window.show();
             });
-
         });
-
     });
 
     /*==============================================================================================================
