@@ -21,8 +21,7 @@ webix.protoUI({
         this._render_when_ready();
     },
     _render_editor: function () {
-        let cdn = this.config.cdn;
-        webix.require(cdn + "/vs/loader.js").then(
+        webix.require(this.config.cdn + "/vs/loader.js").then(
             webix.bind(this._render_configuration, this)
         );
     },
