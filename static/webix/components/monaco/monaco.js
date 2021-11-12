@@ -49,8 +49,8 @@ webix.protoUI({
             this.config.value;
         }
     },
-    getEditor: function (_wait_editor) {
-        if (_wait_editor) {
+    getEditor: function (wait_editor) {
+        if (wait_editor) {
             return this._wait_editor;
         } else {
             return this._editor;
