@@ -365,12 +365,12 @@ let show = function () {
                     ],
                 },
                 body: {
-                    view: "my-editor", language: "json",
+                    view: "monaco-editor", language: "json",
                     readOnly: true, value: view_utilities.generate_source_code(),
                 },
             });
             const ui_window_close = ui_window.queryView({name: "close"});
-            const ui_window_code = ui_window.queryView({view: "my-editor"});
+            const ui_window_code = ui_window.queryView({view: "monaco-editor"});
 
             ui_window.attachEvent("onShow", function () {
                 ui_master.hideProgress();
