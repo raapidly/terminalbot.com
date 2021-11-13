@@ -2,7 +2,7 @@
 
 webix.protoUI({
 
-    name: "$tb-code",
+    name: "my-editor",
 
     $init: function (config) {
         config.cdn = "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.30.1/min";
