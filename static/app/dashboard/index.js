@@ -266,8 +266,28 @@ let show = function () {
             return source_code;
         },
         generate_content: function (component) {
+            if (component !== undefined) {
+                switch (component.$$kind) {
+                    case "datablock":
+                        ui_content.addView({
+                            id: component.id, minHeight: 500,
+                            rows: [
+                                {view: "template", type: "header", template: component.$$name},
+                                {view: "scrollview", scroll: "auto", body: {}},
+                            ],
+                        });
+                        break;
+                }
+            }
         },
         clear_content: function (component) {
+            if (component !== undefined) {
+                switch (component.$$kind) {
+                    case "datablock":
+                        ui_content.removeView(component.id);
+                        break;
+                }
+            }
         },
     };
 
