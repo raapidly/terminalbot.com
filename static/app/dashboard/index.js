@@ -339,7 +339,7 @@ let show = function () {
      ======================================== Resizers Event
      =============================================================================================================*/
 
-    let state_resizer = webix.storage.local.get("state_resizer");
+    const state_resizer = webix.storage.local.get("state_resizer");
     if (state_resizer !== null) {
         ui_tree.define("height", state_resizer.height);
         ui_resizer_1.define("width", state_resizer.width);
