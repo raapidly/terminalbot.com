@@ -265,20 +265,10 @@ let show = function () {
             }
             return source_code;
         },
-        generate_form: function () {
-            let source_code = view_utilities.generate_source_code(true);
-            if (Array.isArray(source_code.data)) {
-                source_code.data.forEach(function (datum) {
-                    ui_content.addView({
-                        minHeight: 500,
-                        rows: [
-                            {view: "template", type: "header", template: datum.$$name},
-                            {view: "scrollview", scroll: "auto", body: {}},
-                        ],
-                    });
-                });
-            }
-        }
+        generate_content: function (component) {
+        },
+        clear_content: function (component) {
+        },
     };
 
     /*==============================================================================================================
@@ -448,11 +438,20 @@ let show = function () {
         }
         ui_tree.showItem(component.id);
     });
-    ui_tree.attachEvent("onAfterAdd", function () {
-        view_utilities.generate_form();
+    ui_tree.attachEvent("onBeforeAdd", function (id, component) {
+        view_utilities.clear_content(component);
     });
-    ui_tree.attachEvent("onDataUpdate", function () {
-        view_utilities.generate_form();
+    ui_tree.attachEvent("onBeforeDelete", function (id) {
+        let component = ui_tree.getItem(id);
+        view_utilities.clear_content(component);
+    });
+    ui_tree.attachEvent("onAfterAdd", function (id) {
+        let component = ui_tree.getItem(id);
+        view_utilities.generate_content(component);
+    });
+    ui_tree.attachEvent("onAfterDelete", function (id) {
+        let component = ui_tree.getItem(id);
+        view_utilities.generate_content(component);
     });
 
     /*==============================================================================================================
