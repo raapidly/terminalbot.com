@@ -370,7 +370,7 @@ let show = function () {
                 },
             });
             const ui_window_close = ui_window.queryView({name: "close"});
-            const ui_window_code = ui_window.queryView({view: "monaco-editor"});
+            const ui_window_editor = ui_window.queryView({view: "monaco-editor"});
 
             ui_window.attachEvent("onShow", function () {
                 ui_master.hideProgress();
@@ -383,7 +383,7 @@ let show = function () {
             ui_window_close.attachEvent("onItemClick", function () {
                 ui_window.hide();
             });
-            ui_window_code.attachEvent("onAfterLoad", function () {
+            ui_window_editor.attachEvent("onAfterLoad", function () {
                 ui_window.show();
             });
 
