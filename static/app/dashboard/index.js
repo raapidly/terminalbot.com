@@ -532,21 +532,21 @@ let show = function () {
 
     const state_resizer = webix.storage.local.get("state_resizer");
     if (state_resizer !== null) {
-        ui_tree.define("height", state_resizer.height);
         ui_resizer_1.define("width", state_resizer.width);
-        ui_tree.resize();
+        ui_resizer_2.define("height", state_resizer.height);
         ui_resizer_1.resize();
+        ui_resizer_2.resize();
     }
     ui_resizer_1.attachEvent("onViewResize", function () {
         webix.storage.local.put("state_resizer", {
             width: ui_resizer_1.$width,
-            height: ui_tree.$height,
+            height: ui_resizer_2.$height,
         });
     });
     ui_resizer_2.attachEvent("onViewResize", function () {
         webix.storage.local.put("state_resizer", {
             width: ui_resizer_1.$width,
-            height: ui_tree.$height,
+            height: ui_resizer_2.$height,
         });
     });
 
