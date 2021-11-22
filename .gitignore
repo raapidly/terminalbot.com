@@ -5,3 +5,4 @@ venv/
 # Files
 *.pyc
 config.json
+desktop.ini
