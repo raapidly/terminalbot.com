@@ -574,8 +574,6 @@ let show = function () {
      =============================================================================================================*/
 
     let state_resizer = webix.storage.local.get("state_resizer");
-    let item_id = ui_tree.add({$$kind: "form"});
-
     if (state_resizer !== null) {
         ui_resizer_1.define("width", state_resizer.width);
         ui_resizer_2.define("height", state_resizer.height);
@@ -594,6 +592,8 @@ let show = function () {
             height: ui_resizer_2.$height,
         });
     });
+
+    let item_id = ui_tree.add({$$kind: "form"});
     ui_tree.open(item_id);
     ui_tree.select(item_id);
 
