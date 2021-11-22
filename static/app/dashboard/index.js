@@ -266,7 +266,17 @@ let show = function () {
             return source_code;
         },
         generate_form: function (source_code) {
-            console.log(source_code);
+            if (Array.isArray(source_code.data)) {
+                source_code.data.forEach(function (datum) {
+                    ui_content.addView({
+                        minHeight: 500,
+                        rows: [
+                            {view: "template", type: "header", template: datum.$$name},
+                            {view: "scrollview", scroll: "auto", body: {}},
+                        ],
+                    });
+                });
+            }
         }
     };
 
@@ -542,7 +552,7 @@ let show = function () {
     });
 
     /*==============================================================================================================
-     ======================================== View Constructor TODO: hard code
+     ======================================== View Constructor
      =============================================================================================================*/
 
     let state_resizer = webix.storage.local.get("state_resizer");
@@ -568,21 +578,6 @@ let show = function () {
     });
     ui_tree.open(item_id);
     ui_tree.select(item_id);
-
-    ui_content.addView({
-        minHeight: 500,
-        rows: [
-            {view: "template", type: "header", template: "Master"},
-            {view: "scrollview", scroll: "auto", body: {}},
-        ],
-    });
-    ui_content.addView({
-        minHeight: 500,
-        rows: [
-            {view: "template", type: "header", template: "Detail"},
-            {view: "scrollview", scroll: "auto", body: {}},
-        ],
-    });
 
 };
 
