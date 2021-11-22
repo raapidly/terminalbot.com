@@ -26,4 +26,17 @@ webix.protoUI({
         }
     },
 
+    setValue: function (value) {
+        this.config.value = value;
+        if (this.$editor) {
+            this.$editor.setValue(value);
+        }
+    },
+    getValue: function () {
+        if (this.$editor) {
+            return this.$editor.getValue();
+        }
+        return this.config.value;
+    },
+
 }, webix.ui.proto);
