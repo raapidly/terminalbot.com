@@ -265,6 +265,9 @@ let show = function () {
             }
             return source_code;
         },
+        generate_form: function (source_code) {
+            console.log(source_code);
+        }
     };
 
     /*==============================================================================================================
@@ -435,12 +438,12 @@ let show = function () {
         ui_tree.showItem(component.id);
     });
     ui_tree.attachEvent("onAfterAdd", function () {
-        let [form] = ui_tree.serialize();
-        console.log(view_utilities.generate_source_code(true));
+        let source_code = view_utilities.generate_source_code(true);
+        view_utilities.generate_form(source_code);
     });
     ui_tree.attachEvent("onDataUpdate", function () {
-        let [form] = ui_tree.serialize();
-        console.log(form);
+        let source_code = view_utilities.generate_source_code(true);
+        view_utilities.generate_form(source_code);
     });
 
     /*==============================================================================================================
