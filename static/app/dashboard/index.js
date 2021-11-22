@@ -364,10 +364,7 @@ let show = function () {
                         {name: "close", view: "icon", icon: "mdi mdi-close", tooltip: "Close"},
                     ],
                 },
-                body: {
-                    view: "monaco-editor", language: "json",
-                    readOnly: true, value: view_utilities.generate_source_code(),
-                },
+                body: {view: "monaco-editor", language: "json", readOnly: true},
             });
             const ui_window_close = ui_window.queryView({name: "close"});
             const ui_window_editor = ui_window.queryView({view: "monaco-editor"});
@@ -384,7 +381,9 @@ let show = function () {
                 ui_window.hide();
             });
             ui_window_editor.attachEvent("onAfterLoad", function () {
+                let source_code = view_utilities.generate_source_code();
                 ui_window.show();
+                ui_window_editor.setValue(source_code);
             });
 
         });
