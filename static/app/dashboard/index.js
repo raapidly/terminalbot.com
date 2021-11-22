@@ -265,7 +265,7 @@ let show = function () {
             }
             return source_code;
         },
-        generate_content: function (component) {
+        add_component: function (component) {
             if (component !== undefined) {
                 switch (component.$$kind) {
                     case "datablock":
@@ -280,7 +280,7 @@ let show = function () {
                 }
             }
         },
-        clear_content: function (component) {
+        remove_component: function (component) {
             if (component !== undefined) {
                 switch (component.$$kind) {
                     case "datablock":
@@ -459,19 +459,19 @@ let show = function () {
         ui_tree.showItem(component.id);
     });
     ui_tree.attachEvent("onBeforeAdd", function (id, component) {
-        view_utilities.clear_content(component);
+        view_utilities.remove_component(component);
     });
     ui_tree.attachEvent("onBeforeDelete", function (id) {
         let component = ui_tree.getItem(id);
-        view_utilities.clear_content(component);
+        view_utilities.remove_component(component);
     });
     ui_tree.attachEvent("onAfterAdd", function (id) {
         let component = ui_tree.getItem(id);
-        view_utilities.generate_content(component);
+        view_utilities.add_component(component);
     });
     ui_tree.attachEvent("onAfterDelete", function (id) {
         let component = ui_tree.getItem(id);
-        view_utilities.generate_content(component);
+        view_utilities.add_component(component);
     });
 
     /*==============================================================================================================
