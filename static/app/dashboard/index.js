@@ -312,7 +312,7 @@ let show = function () {
      =============================================================================================================*/
 
     const ui_master = $$("ui-master");
-    const ui_resizers = ui_master.queryView({id: "ui-resizer"}, "all");
+    const [ui_resizer_1, ui_resizer_2] = ui_master.queryView({id: "ui-resizer"}, "all");
     const ui_toolbar = $$("ui-toolbar");
     const ui_toolbar_dashboard = ui_toolbar.queryView({name: "dashboard"});
     const ui_toolbar_save = ui_toolbar.queryView({name: "save"});
@@ -341,11 +341,20 @@ let show = function () {
      ======================================== Resizers Event
      =============================================================================================================*/
 
-    ui_resizers.forEach(function (ui_resizer) {
-        ui_resizer.attachEvent("onViewResize", function () {
-            console.log(ui_tree.$width, ui_tree.$height);
-        });
-    });
+    // ui_resizers.forEach(function (ui_resizer) {
+    //     let size = webix.storage.local.get(ui_resizer.config.id);
+    //     if (size !== null) {
+    //         ui_resizer.define("width", size.width);
+    //         ui_resizer.define("height", size.height);
+    //         ui_resizer.resize();
+    //     }
+    //     ui_resizer.attachEvent("onViewResize", function () {
+    //         webix.storage.local.put(ui_resizer.config.id, {
+    //             width: ui_resizer.$width,
+    //             height: ui_resizer.$height,
+    //         });
+    //     });
+    // });
 
     /*==============================================================================================================
      ======================================== Toolbar Event
