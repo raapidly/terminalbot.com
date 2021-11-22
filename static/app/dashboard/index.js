@@ -294,10 +294,7 @@ let show = function () {
                     {
                         type: "wide",
                         rows: [
-                            {
-                                view: "scrollview", scroll: "y",
-                                body: view_objects.content,
-                            },
+                            {view: "scrollview", scroll: "y", body: view_objects.content},
                         ],
                     },
                 ],
