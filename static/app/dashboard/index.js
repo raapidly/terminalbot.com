@@ -153,6 +153,10 @@ let show = function () {
                 },
                 {},
                 {
+                    name: "preview", view: "icon", icon: "mdi mdi-monitor-eye",
+                    tooltip: "Preview", borderless: false,
+                },
+                {
                     name: "source-code", view: "icon", icon: "mdi mdi-application-braces-outline",
                     tooltip: "Source Code", borderless: false,
                 },
