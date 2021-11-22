@@ -265,7 +265,8 @@ let show = function () {
             }
             return source_code;
         },
-        generate_form: function (source_code) {
+        generate_form: function () {
+            let source_code = view_utilities.generate_source_code(true);
             if (Array.isArray(source_code.data)) {
                 source_code.data.forEach(function (datum) {
                     ui_content.addView({
@@ -448,12 +449,10 @@ let show = function () {
         ui_tree.showItem(component.id);
     });
     ui_tree.attachEvent("onAfterAdd", function () {
-        let source_code = view_utilities.generate_source_code(true);
-        view_utilities.generate_form(source_code);
+        view_utilities.generate_form();
     });
     ui_tree.attachEvent("onDataUpdate", function () {
-        let source_code = view_utilities.generate_source_code(true);
-        view_utilities.generate_form(source_code);
+        view_utilities.generate_form();
     });
 
     /*==============================================================================================================
