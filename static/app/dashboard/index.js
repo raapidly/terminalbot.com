@@ -275,7 +275,8 @@ let show = function () {
                 type: "wide",
                 cols: [
                     {
-                        type: "wide", width: 250, minWidth: 250, maxWidth: 450,
+                        id: "ui-resizer", type: "wide",
+                        width: 250, minWidth: 250, maxWidth: 450,
                         rows: [
                             view_objects.tree,
                             {view: "resizer"},
@@ -291,7 +292,7 @@ let show = function () {
                     },
                     {view: "resizer"},
                     {
-                        id: "ui-resizer", type: "wide",
+                        type: "wide",
                         rows: [
                             {
                                 view: "scrollview", scroll: "y",
@@ -341,20 +342,25 @@ let show = function () {
      ======================================== Resizers Event
      =============================================================================================================*/
 
-    // ui_resizers.forEach(function (ui_resizer) {
-    //     let size = webix.storage.local.get(ui_resizer.config.id);
-    //     if (size !== null) {
-    //         ui_resizer.define("width", size.width);
-    //         ui_resizer.define("height", size.height);
-    //         ui_resizer.resize();
-    //     }
-    //     ui_resizer.attachEvent("onViewResize", function () {
-    //         webix.storage.local.put(ui_resizer.config.id, {
-    //             width: ui_resizer.$width,
-    //             height: ui_resizer.$height,
-    //         });
-    //     });
-    // });
+    let state_resizer = webix.storage.local.get("state_resizer");
+    if (state_resizer !== null) {
+        ui_tree.define("height", state_resizer.height);
+        ui_resizer_1.define("width", state_resizer.width);
+        ui_tree.resize();
+        ui_resizer_1.resize();
+    }
+    ui_resizer_1.attachEvent("onViewResize", function () {
+        webix.storage.local.put("state_resizer", {
+            width: ui_resizer_1.$width,
+            height: ui_tree.$height,
+        });
+    });
+    ui_resizer_2.attachEvent("onViewResize", function () {
+        webix.storage.local.put("state_resizer", {
+            width: ui_resizer_1.$width,
+            height: ui_tree.$height,
+        });
+    });
 
     /*==============================================================================================================
      ======================================== Toolbar Event
