@@ -249,9 +249,9 @@ let show = function () {
         },
     };
     const view_utilities = {
-        generate_source_code: function () {
-            let space = 2;
+        generate_source_code: function (as_object = false) {
             let [value] = ui_tree.serialize();
+            let indentation = 2;
             let replacer = [
                 "id", "$$kind",
                 ...Object.keys(validator_property.form),
@@ -259,7 +259,11 @@ let show = function () {
                 ...Object.keys(validator_property.item),
                 "data",
             ];
-            return JSON.stringify(value, replacer, space);
+            let source_code = JSON.stringify(value, replacer, indentation);
+            if (as_object === true) {
+                source_code = JSON.parse(source_code);
+            }
+            return source_code;
         },
     };
 
@@ -429,6 +433,14 @@ let show = function () {
                 break;
         }
         ui_tree.showItem(component.id);
+    });
+    ui_tree.attachEvent("onAfterAdd", function () {
+        let [form] = ui_tree.serialize();
+        console.log(view_utilities.generate_source_code(true));
+    });
+    ui_tree.attachEvent("onDataUpdate", function () {
+        let [form] = ui_tree.serialize();
+        console.log(form);
     });
 
     /*==============================================================================================================
