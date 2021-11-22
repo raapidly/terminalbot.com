@@ -328,12 +328,6 @@ let show = function () {
     const ui_property_item = $$("ui-property-item");
     const ui_content = $$("ui-content");
 
-    ui_resizers.forEach(function (ui_resizer) {
-        ui_resizer.attachEvent("onViewResize", function () {
-            console.log(ui_tree.$width, ui_tree.$height);
-        });
-    });
-
     /*==============================================================================================================
      ======================================== View Binding
      =============================================================================================================*/
@@ -342,6 +336,16 @@ let show = function () {
     ui_context_form.attachTo(ui_tree);
     ui_context_datablock.attachTo(ui_tree);
     ui_context_item.attachTo(ui_tree);
+
+    /*==============================================================================================================
+     ======================================== Resizers Event
+     =============================================================================================================*/
+
+    ui_resizers.forEach(function (ui_resizer) {
+        ui_resizer.attachEvent("onViewResize", function () {
+            console.log(ui_tree.$width, ui_tree.$height);
+        });
+    });
 
     /*==============================================================================================================
      ======================================== Toolbar Event
