@@ -280,7 +280,7 @@ let show = function () {
                             view_objects.tree,
                             {view: "resizer"},
                             {
-                                minHeight: 175,
+                                id: "ui-resizer", minHeight: 175,
                                 rows: [
                                     view_objects.property_form,
                                     view_objects.property_datablock,
@@ -291,7 +291,7 @@ let show = function () {
                     },
                     {view: "resizer"},
                     {
-                        type: "wide",
+                        id: "ui-resizer", type: "wide",
                         rows: [
                             {
                                 view: "scrollview", scroll: "y",
@@ -312,6 +312,7 @@ let show = function () {
      =============================================================================================================*/
 
     const ui_master = $$("ui-master");
+    const ui_resizers = ui_master.queryView({id: "ui-resizer"}, "all");
     const ui_toolbar = $$("ui-toolbar");
     const ui_toolbar_dashboard = ui_toolbar.queryView({name: "dashboard"});
     const ui_toolbar_save = ui_toolbar.queryView({name: "save"});
@@ -326,6 +327,12 @@ let show = function () {
     const ui_property_datablock = $$("ui-property-datablock");
     const ui_property_item = $$("ui-property-item");
     const ui_content = $$("ui-content");
+
+    ui_resizers.forEach(function (ui_resizer) {
+        ui_resizer.attachEvent("onViewResize", function () {
+            console.log(ui_tree.$width, ui_tree.$height);
+        });
+    });
 
     /*==============================================================================================================
      ======================================== View Binding
