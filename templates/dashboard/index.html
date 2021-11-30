@@ -12,7 +12,11 @@
                 "/static/app/dashboard/index.css": true,
                 "/static/app/dashboard/index.js": true,
             }).then(function () {
-                $tb.show();
+                try {
+                    $tb.show();
+                } catch (error) {
+                    console.error(error);
+                }
             });
         });
     </script>
