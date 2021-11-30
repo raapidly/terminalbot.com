@@ -168,7 +168,7 @@ let show = function () {
             template: view_functions.tree.template,
         },
         context_form: {
-            id: "ui-context-form", view: "contextmenu", width: 200,
+            id: "ui-context-form", view: "contextmenu",
             data: [
                 {
                     id: "insert", value: "Insert",
@@ -181,7 +181,7 @@ let show = function () {
             ],
         },
         context_datablock: {
-            id: "ui-context-datablock", view: "contextmenu", width: 200,
+            id: "ui-context-datablock", view: "contextmenu",
             data: [
                 {
                     id: "insert", value: "Insert",
@@ -195,7 +195,7 @@ let show = function () {
             ],
         },
         context_item: {
-            id: "ui-context-item", view: "contextmenu", width: 200,
+            id: "ui-context-item", view: "contextmenu",
             data: [
                 {id: "delete", value: "Delete"},
                 {$template: "Separator"},
