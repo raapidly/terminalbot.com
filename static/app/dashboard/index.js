@@ -573,6 +573,9 @@ let show = function () {
      ======================================== View Constructor TODO: hard code
      =============================================================================================================*/
 
+    window.addEventListener("beforeunload", function (event) {
+        event.returnValue = true;
+    });
     let state_resizer = webix.storage.local.get("state_resizer");
     if (state_resizer !== null) {
         ui_resizer_1.define("width", state_resizer.width);
