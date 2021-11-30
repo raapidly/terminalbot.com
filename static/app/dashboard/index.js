@@ -599,7 +599,7 @@ let show = function () {
 
 };
 
+window.$tb = {show: show};
 window.addEventListener("beforeunload", function (event) {
     event.returnValue = true;
 });
-window.$tb = {show: show};
